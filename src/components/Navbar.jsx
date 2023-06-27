@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { styles } from "../styles";
 import { navLinks } from "../constants";
-import { logo, menu, close } from "../assets";
+import { logo, menu, close, download } from "../assets";
 
 const Navbar = () => {
   const [active, setActive] = useState(""); 
@@ -42,6 +42,21 @@ const Navbar = () => {
               <a href={`#${link.id}`}>{link.title}</a>
             </li>
           ))}
+          <div 
+            className="flex justify-content align-items bg-white rounded-xl"
+            style={{marginTop: -4, marginBottom: 4}}
+          >
+            <a
+            style={{color : "black", padding: 6}}
+            href="./SamuelBecharResume.pdf" download
+            >Resume</a>
+            <img
+                src={download}
+                alt="download"
+                className="w-[18px] h-[18px] object-contain cursor-pointer"
+                style={{marginTop: 8, marginRight: 6}}
+              />
+          </div>
         </ul>
         <div className="sm:hidden flex flex-1 justify-end items-center">
           <img
@@ -69,6 +84,12 @@ const Navbar = () => {
                 <a href={`#${link.id}`}>{link.title}</a>
               </li>
             ))}
+          <div>
+            <a
+            style={{color : "white"}}
+            href="./SamuelBecharResume.pdf" download
+            >Resume</a>
+          </div>
             </ul>
           </div>
         </div>
