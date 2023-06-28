@@ -4,7 +4,7 @@ import backend from "./backend.png";
 import creator from "./creator.png";
 import mobile from "./mobile.png";
 import web from "./web.png";
-import github from "./github.png";
+import notion from "./notion.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 
@@ -24,9 +24,10 @@ import cPlusPlus from "./tech/cPlusPlus.png"
 import avicenna from "./company/avicenna.jpg"
 import ally from "./company/ally.jpg"
 
-import carrent from "./carrent.png";
-import jobit from "./jobit.png";
-import tripguide from "./tripguide.png";
+import stir from "./stir.jpeg";
+import luxPicnics from "./luxPicnics.jpeg";
+import avitracker from "./avitracker.jpg";
+import arize from "./arize.png"
 
 export {
   logo,
@@ -35,7 +36,7 @@ export {
   creator,
   mobile,
   web,
-  github,
+  notion,
   menu,
   close,
   css,
@@ -52,7 +53,8 @@ export {
   threejs,
   avicenna,
   ally,
-  carrent,
-  jobit,
-  tripguide,
+  stir,
+  luxPicnics,
+  avitracker,
+  arize,
 };

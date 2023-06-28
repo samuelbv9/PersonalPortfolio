@@ -14,9 +14,10 @@ import {
     mongodb,
     git,
     figma,
-    carrent,
-    jobit,
-    tripguide,
+    stir,
+    luxPicnics,
+    avitracker,
+    arize,
     threejs,
     avicenna,
     ally,
@@ -150,67 +151,88 @@ import {
   
   const projects = [
     {
-      name: "Car Rent",
+      name: "Stir",
       description:
-        "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+        "Founder of Stir. E-commerce brand/store selling a supplement for coffee consisting of adaptogens and other natural ingredients designed to fuel focus, increase energy, and decrease stress.",
       tags: [
         {
-          name: "react",
+          name: "ecommerce",
           color: "blue-text-gradient",
         },
         {
-          name: "mongodb",
+          name: "health",
           color: "green-text-gradient",
         },
         {
-          name: "tailwind",
+          name: "business",
           color: "pink-text-gradient",
         },
       ],
-      image: carrent,
-      source_code_link: "https://github.com/",
+      image: stir,
+      source_code_link: "https://samuelbechar.notion.site/Stir-Portfolio-98309cbf927f43189c0e4e8a4bd2d176?pvs=4",
     },
     {
-      name: "Job IT",
+      name: "Lux Picnics Ann Arbor",
       description:
-        "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+        "Co-Founded Lux Picnics Ann Arbor alongside younger brother. Luxury Pop Up Picnic setup company catering to Ann Arbor area. Various different setups and featured on Local 4 news.",
       tags: [
         {
-          name: "react",
+          name: "events",
           color: "blue-text-gradient",
         },
         {
-          name: "restapi",
+          name: "picnics",
           color: "green-text-gradient",
         },
         {
-          name: "scss",
+          name: "business",
           color: "pink-text-gradient",
         },
       ],
-      image: jobit,
-      source_code_link: "https://github.com/",
+      image: luxPicnics,
+      source_code_link: "https://samuelbechar.notion.site/Lux-Picnics-Ann-Arbor-Portfolio-c6a19506fac44c54b7a98c0feae4fbaf?pvs=4",
     },
     {
-      name: "Trip Guide",
+      name: "AviTracks",
       description:
-        "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+        "iPhone application for remote patient monitoring. Connects to users Apple Health which aggregates health measurements and sends the data to Avicenna via API to be viewed by the doctor",
       tags: [
         {
-          name: "nextjs",
+          name: "swift",
           color: "blue-text-gradient",
         },
         {
-          name: "supabase",
+          name: "api",
           color: "green-text-gradient",
         },
         {
-          name: "css",
+          name: "healthcare",
           color: "pink-text-gradient",
         },
       ],
-      image: tripguide,
-      source_code_link: "https://github.com/",
+      image: avitracker,
+      source_code_link: "https://samuelbechar.notion.site/AviTracks-Portfolio-a8f5561daf694d04830a37effcca882b?pvs=4",
+    },
+    {
+      name: "Arize",
+      description:
+        "iOS application that displays in-depth Instagram statistics and allows for content editing and scheduling. Integrates nodejs backend, firebase cloud functions, facebook api, swift frontend, and more.",
+      tags: [
+        {
+          name: "swift",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "instagram",
+          color: "green-text-gradient",
+        },
+        {
+          name: "cloud functions",
+          color: "pink-text-gradient",
+        },
+      ],
+      image: arize,
+      source_code_link: "https://samuelbechar.notion.site/Arize-Portfolio-5a988f77e66d4e66935bde76766b8892?pvs=4",
     },
   ];
   
