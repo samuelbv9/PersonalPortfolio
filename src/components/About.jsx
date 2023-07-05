@@ -47,7 +47,7 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
-        Welcome to my personal portfolio! I'm a student at the University of Michigan College of Engineering, pursuing a degree in computer science. With a strong background in mobile app development, I enjoy creating innovative applications while also nurturing my entrepreneurial side through side business ventures. Constantly driven by curiosity, I am passionate about exploring and learning about the latest technologies, always eager to tinker and push the boundaries of what's possible.
+        Welcome to my personal portfolio! I'm a student at the University of Michigan College of Engineering, pursuing a degree in computer science. With a strong background in mobile app development, I enjoy creating innovative applications while also nurturing my entrepreneurial side through side business ventures. I am constantly driven by curiosity, passionate about exploring and learning about the latest technologies, and always eager to tinker and push the boundaries of what's possible.
       </motion.p>
 
       <div className='mt-20 flex flex-wrap gap-10 place-content-center'>
