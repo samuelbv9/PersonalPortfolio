@@ -50,7 +50,7 @@ const About = () => {
         Welcome to my personal portfolio! I'm a student at the University of Michigan College of Engineering, pursuing a degree in computer science. With a strong background in mobile app development, I enjoy creating innovative applications while also nurturing my entrepreneurial side through side business ventures. Constantly driven by curiosity, I am passionate about exploring and learning about the latest technologies, always eager to tinker and push the boundaries of what's possible.
       </motion.p>
 
-      <div className='mt-20 flex flex-wrap gap-10'>
+      <div className='mt-20 flex flex-wrap gap-10 place-content-center'>
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}

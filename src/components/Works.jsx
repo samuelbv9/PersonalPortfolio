@@ -69,7 +69,7 @@ const Works = () => {
           variants={fadeIn("","",0.1,1)}
           className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
         >
-          Welcome to the Projects section of my portfolio! Here, you'll discover a curated selection of my latest and most notable endeavors. This collection showcases my ability to solve complex problems, use different technologies, and strive to continue learning. From innovative apps to successful side businesses, explore the diverse range of projects that demonstrate my passion for creating impactful solutions and driving meaningful change.
+          Welcome to the Projects section of my portfolio! Here, you'll discover a curated selection of my latest and most notable endeavors. This collection showcases my ability to solve complex problems, use different technologies, and strive to continue learning. From innovative apps to successful side businesses, explore the diverse range of projects that demonstrate my passion for creating impactful solutions and driving meaningful change. (click on the notion icon to learn more about each project)
         </motion.p>
       </div> 
 
