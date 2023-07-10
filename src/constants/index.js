@@ -114,7 +114,7 @@ import {
       company_name: "Avicenna Medical Systems",
       icon: avicenna,
       iconBg: "#fff",
-      date: "June 2020 - November 2020",
+      date: "June 2021 - November 2021",
       points: [
         "In charge of revamping new company website according to design specifications.",
         "Collaborated with Head of Marketing and Co-Founder to deliver on the companies vision",
