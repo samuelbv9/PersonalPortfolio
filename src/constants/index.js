@@ -21,6 +21,7 @@ import {
     threejs,
     avicenna,
     ally,
+    blitz
   } from "../assets";
 
   export const navLinks = [
@@ -150,6 +151,27 @@ import {
   ];
   
   const projects = [
+    {
+      name: "Blitz",
+      description:
+        "Blitz is an iOS mobile app that allows indecisive couples and or friends to decide on plans. Simply choose your parameters and swipe away like tinder until a match is reached",
+      tags: [
+        {
+          name: "swift",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "multi-player",
+          color: "green-text-gradient",
+        },
+        {
+          name: "firebase",
+          color: "pink-text-gradient",
+        },
+      ],
+      image: blitz,
+      source_code_link: "https://samuelbechar.notion.site/Blitz-47841c12d67b489eb53b9888e5a9334a?pvs=4",
+    },
     {
       name: "Stir",
       description:
