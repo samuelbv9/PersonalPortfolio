@@ -28,7 +28,7 @@ import stir from "./stir.jpeg";
 import luxPicnics from "./luxPicnics.jpeg";
 import avitracker from "./avitracker.jpg";
 import arize from "./arize.png";
-import blitz from "./blitz.png";
+import blitz from "./blitz.jpeg";
 
 export {
   logo,
