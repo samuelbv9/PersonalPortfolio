@@ -11,11 +11,11 @@ const Hero = () => {
           <div className="w-5 h-5 rounded-full bg-[#915eff]"/>
           <div className="w-1 sm:h-80 h-40 violet-gradient"/>
         </div>
-        
+
         <div>
           <h1 className={`${styles.heroHeadText} text-white`}>Hi, I'm <span className="text-[#915eff]">Samuel</span></h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`} >
-            A student crafting mobile apps and pursuing <br className='sm:block hidden' /> exciting side projects.
+            A student pursuing business ventures and <br className='sm:block hidden' /> exciting side projects.
           </p>
         </div>
       </div>
@@ -24,7 +24,7 @@ const Hero = () => {
       <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-cetner">
         <a href="#about">
           <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
-            <motion.dev 
+            <motion.dev
               animate={{
                 y: [0,24,0]
               }}

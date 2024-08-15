@@ -20,9 +20,11 @@ import swift from "./tech/swift.jpeg";
 import threejs from "./tech/threejs.svg";
 import firebase from "./tech/firebase.png"
 import cPlusPlus from "./tech/cPlusPlus.png"
+import python from "./tech/python.png"
 
 import avicenna from "./company/avicenna.jpg"
 import ally from "./company/ally.jpg"
+import rubrik from "./company/rubrik.jpeg"
 
 import stir from "./stir.jpeg";
 import luxPicnics from "./luxPicnics.jpeg";
@@ -58,5 +60,7 @@ export {
   luxPicnics,
   avitracker,
   arize,
-  blitz
+  blitz,
+  rubrik,
+  python,
 };

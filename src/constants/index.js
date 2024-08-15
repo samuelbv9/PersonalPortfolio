@@ -21,7 +21,9 @@ import {
     threejs,
     avicenna,
     ally,
-    blitz
+    blitz,
+    rubrik,
+    python,
   } from "../assets";
 
   export const navLinks = [
@@ -38,26 +40,26 @@ import {
       title: "Contact",
     },
   ];
-  
+
   const services = [
     {
-      title: "Mobile Developer",
+      title: "Student",
       icon: web,
     },
     {
-      title: "Web Developer",
+      title: "Engineer",
       icon: mobile,
     },
     {
-      title: "Tinkerer",
+      title: "Builder",
       icon: backend,
     },
     {
-      title: "Student",
+      title: "Tinkerer",
       icon: creator,
     },
   ];
-  
+
   const technologies = [
     {
       name: "HTML 5",
@@ -96,19 +98,19 @@ import {
       icon: mongodb,
     },
     {
-      name: "Three JS",
-      icon: threejs,
+      name: "Python",
+      icon: python,
     },
     {
       name: "git",
       icon: git,
     },
     {
-      name: "figma",
+      name: "Figma",
       icon: figma,
     },
   ];
-  
+
   const experiences = [
     {
       title: "Web Development Intern",
@@ -148,8 +150,20 @@ import {
         "Gave a final presentation on findings and recommendations from research project to executive leadership",
       ],
     },
+    {
+      title: "Software Engineering Intern",
+      company_name: "Rubrik",
+      icon: rubrik,
+      iconBg: "#fff",
+      date: "May 2024 - August 2024",
+      points: [
+        "Developed a more complete multiple approval feature (Quorum Authorization) from a basic two-person rule to support multiple approvers, improving security for potentially destructive actions within Rubrik Security Cloud.",
+        "Executed full-stack development for the Quorum Authorization feature using Go and Scala for backend, GraphQL and React for frontend, and Python for scripting tasks.",
+        "Presented the enhanced feature to leadership, emphasizing its creation in response to federal customer requests, and handed the feature off for production release.",
+      ],
+    },
   ];
-  
+
   const projects = [
     {
       name: "Blitz",
@@ -257,5 +271,5 @@ import {
       source_code_link: "https://samuelbechar.notion.site/Arize-Portfolio-5a988f77e66d4e66935bde76766b8892?pvs=4",
     },
   ];
-  
+
   export { services, technologies, experiences, projects };
