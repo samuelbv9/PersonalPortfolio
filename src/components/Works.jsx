@@ -21,7 +21,7 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
         <div className="relative w-full h-[230px]">
           <img
             src={image}
-            alt={name}
+            alt='project_image'
             className="w-full h-full object-cover rounded-2xl"
           />
 
@@ -53,15 +53,15 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
         </div>
       </Tilt>
     </motion.div>
-  )
-}
+  );
+};
 
 const Works = () => {
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>My work</p>
-        <h2 className={styles.sectionHeadText}>Projects.</h2>
+        <p className={`${styles.sectionSubText}`}>My work</p>
+        <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
       </motion.div>
 
       <div className="w-full flex">
@@ -71,7 +71,7 @@ const Works = () => {
         >
           Welcome to the Projects section of my portfolio! Here, you'll discover a curated selection of my latest and most notable endeavors. This collection showcases my ability to solve complex problems, use different technologies, and strive to continue learning. From innovative apps to successful side businesses, explore the diverse range of projects that demonstrate my passion for creating impactful solutions and driving meaningful change. (click on the notion icon to learn more about each project)
         </motion.p>
-      </div> 
+      </div>
 
       <div className="mt-20 flex flex-wrap gap-7">
         {projects.map((project, index) => (
@@ -83,7 +83,7 @@ const Works = () => {
         ))}
       </div>
     </>
-  )
-}
+  );
+};
 
 export default SectionWrapper(Works, "");
