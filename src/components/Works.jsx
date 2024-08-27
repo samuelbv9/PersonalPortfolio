@@ -72,18 +72,18 @@ const Works = () => {
           Welcome to the Projects section of my portfolio! Here, you'll discover a curated selection of my latest and most notable endeavors. This collection showcases my ability to solve complex problems, use different technologies, and strive to continue learning. From innovative apps to successful side businesses, explore the diverse range of projects that demonstrate my passion for creating impactful solutions and driving meaningful change. (click on the notion icon to learn more about each project)
         </motion.p>
       </div>
-
-      // <div className="mt-20 flex flex-wrap gap-7">
-      //   {projects.map((project, index) => (
-      //     <ProjectCard
-      //       key={`project-${index}`}
-      //       index={index}
-      //       {...project}
-      //     />
-      //   ))}
-      // </div>
     </>
   );
 };
 
 export default SectionWrapper(Works, "");
+
+// <div className="mt-20 flex flex-wrap gap-7">
+//   {projects.map((project, index) => (
+//     <ProjectCard
+//       key={`project-${index}`}
+//       index={index}
+//       {...project}
+//     />
+//   ))}
+// </div>
