@@ -1,0 +1,5 @@
+# Static HTML/CSS site — no build step.
+# Overrides the old Vite build settings saved in the Netlify UI.
+[build]
+  command = "echo 'static site — no build needed'"
+  publish = "."
