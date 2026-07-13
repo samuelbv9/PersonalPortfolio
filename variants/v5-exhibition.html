@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Samuel Bechar — Software Engineer & Builder</title>
+<meta name="description" content="Samuel Bechar — Software Engineer at Rubrik. Building apps, web experiences, and businesses from the ground up." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f4f1ea;--paper:#faf8f3;--ink:#1a1814;--ink-soft:#5c574e;
+    --line:#e0dacd;--line-strong:#cfc8b8;--accent:#b5472d;--glow:rgba(181,71,45,.45);
+    --frame-shadow:0 30px 70px -30px rgba(40,30,15,.5);
+  }
+  [data-theme="dark"]{
+    --bg:#14110d;--paper:#1d1813;--ink:#efe6d6;--ink-soft:#a99a83;
+    --line:rgba(255,255,255,.10);--line-strong:rgba(255,255,255,.18);--accent:#c7984f;--glow:rgba(199,152,79,.5);
+    --frame-shadow:0 30px 76px -30px rgba(0,0,0,.8);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .4s,color .4s}
+  ::selection{background:var(--accent);color:var(--bg)}
+  a{color:inherit;text-decoration:none}
+  .serif{font-family:"Fraunces",serif}
+  .smallcaps{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+
+  /* fixed chrome */
+  .chrome{position:fixed;inset:0;z-index:40;pointer-events:none}
+  .chrome .logo{position:absolute;top:24px;left:30px;font-family:"Fraunces",serif;font-size:21px;pointer-events:auto}
+  .chrome .logo b{color:var(--accent)}
+  .chrome .nav{position:absolute;top:26px;left:50%;transform:translateX(-50%);display:flex;gap:24px;font-size:13.5px;pointer-events:auto}
+  .chrome .nav a{opacity:.65;transition:.25s;cursor:pointer}.chrome .nav a:hover,.chrome .nav a.on{opacity:1;color:var(--accent)}
+  @media(max-width:760px){.chrome .nav{display:none}}
+  .theme-toggle{position:absolute;top:18px;right:26px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line-strong);background:var(--bg);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:.25s;pointer-events:auto}
+  .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:rotate(15deg)}
+  .theme-toggle svg{width:16px;height:16px}.ic-sun{display:none}.ic-moon{display:block}
+  [data-theme="dark"] .ic-sun{display:block}[data-theme="dark"] .ic-moon{display:none}
+
+  /* progress + counter */
+  .progress{position:fixed;left:30px;right:30px;bottom:26px;z-index:40;display:flex;align-items:center;gap:18px;pointer-events:none}
+  .progress .bar{flex:1;height:1px;background:var(--line-strong);position:relative}
+  .progress .bar i{position:absolute;left:0;top:0;height:1px;background:var(--accent);width:0;transition:width .25s}
+  .progress .count{font-family:"Fraunces",serif;font-style:italic;font-size:14px;color:var(--ink-soft);white-space:nowrap}
+  .progress .hint{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap}
+  @media(max-width:760px){.progress{display:none}}
+
+  /* TRACK */
+  .track{display:flex;height:100vh;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .track::-webkit-scrollbar{display:none}
+  .panel{flex:0 0 100vw;height:100vh;scroll-snap-align:start;display:flex;align-items:center;padding:0 8vw;position:relative}
+  .pnum{position:absolute;top:50%;right:6vw;transform:translateY(-50%);font-family:"Fraunces",serif;font-size:clamp(120px,26vw,360px);line-height:1;color:var(--line);z-index:0;pointer-events:none;font-weight:300}
+
+  /* intro panel */
+  .intro{z-index:1;max-width:880px}
+  .intro .eyebrow{display:flex;align-items:center;gap:11px;margin-bottom:26px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 var(--glow)}70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+  .intro h1{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(58px,11vw,160px);line-height:.88;letter-spacing:-.02em}
+  .intro h1 .it{display:block;font-style:italic;font-weight:400}
+  .intro .sub{font-size:clamp(18px,2.2vw,25px);max-width:560px;margin-top:30px;color:var(--ink-soft)}
+  .intro .sub em{font-family:"Fraunces",serif;font-style:italic;color:var(--ink)}
+  .intro .go{margin-top:40px;display:inline-flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+  .intro .go .arr{font-size:18px;animation:slide 1.8s infinite}
+  @keyframes slide{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+
+  /* about panel */
+  .about{z-index:1;max-width:720px}
+  .about .lede{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(24px,3.4vw,42px);line-height:1.38}
+  .about .lede em{font-style:italic;color:var(--accent)}
+  .about .facts{display:flex;gap:50px;margin-top:46px;flex-wrap:wrap}
+  .about .facts .f .k{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+  .about .facts .f .v{font-family:"Fraunces",serif;font-size:20px;margin-top:8px}
+  .about .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;max-width:620px}
+  .about .tags span{border:1px solid var(--line-strong);padding:6px 12px;border-radius:30px;font-size:13px}
+
+  /* project panel */
+  .proj{z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:7vw;align-items:center;width:100%;max-width:1200px;margin:0 auto}
+  .proj .pic{aspect-ratio:4/5;border-radius:4px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--frame-shadow);background:var(--paper)}
+  .proj .pic img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+  .proj:hover .pic img{transform:scale(1.05)}
+  .proj .info .idx{font-family:"Fraunces",serif;font-style:italic;color:var(--accent);font-size:17px}
+  .proj .info h2{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(40px,6vw,78px);line-height:.95;letter-spacing:-.01em;margin:10px 0 16px}
+  .proj .info .cat{margin-bottom:18px}
+  .proj .info p{color:var(--ink-soft);max-width:42ch}
+  .proj .info .read{margin-top:26px;display:inline-flex;gap:9px;align-items:center;font-size:14px;border-bottom:1px solid var(--line-strong);padding-bottom:3px;transition:.25s}
+  .proj .info .read:hover{color:var(--accent);border-color:var(--accent)}
+
+  /* experience panel */
+  .exp{z-index:1;width:100%;max-width:900px}
+  .exp .h{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(30px,4vw,52px);margin-bottom:34px}
+  .exp .row{display:grid;grid-template-columns:110px 1fr;gap:30px;padding:20px 0;border-top:1px solid var(--line)}
+  .exp .row .when{font-style:italic;font-family:"Fraunces",serif;color:var(--accent);font-size:16px}
+  .exp .row h3{font-family:"Fraunces",serif;font-weight:400;font-size:20px;margin-bottom:5px}
+  .exp .row h3 a{color:var(--accent)}
+  .exp .row p{color:var(--ink-soft);font-size:14px;max-width:60ch}
+
+  /* contact panel */
+  .contact{z-index:1;text-align:center;width:100%}
+  .contact .smallcaps{margin-bottom:20px;display:block}
+  .contact .mega{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(56px,13vw,180px);line-height:.88;letter-spacing:-.02em;display:inline-block;transition:.4s}
+  .contact .mega:hover{color:var(--accent);font-style:italic}
+  .contact .links{display:flex;gap:36px;justify-content:center;margin-top:42px;flex-wrap:wrap;font-size:15px}
+  .contact .links a{opacity:.74;border-bottom:1px solid transparent;padding-bottom:2px;transition:.25s}
+  .contact .links a:hover{opacity:1;border-color:var(--accent)}
+
+  /* ── MOBILE: fall back to normal vertical ── */
+  @media(max-width:760px),(pointer:coarse){
+    .track{display:block;height:auto;overflow:visible}
+    .panel{flex:none;width:100%;height:auto;min-height:auto;padding:90px 24px;border-bottom:1px solid var(--line);scroll-snap-align:none}
+    .pnum{display:none}
+    .proj{grid-template-columns:1fr;gap:28px}
+    .proj .pic{aspect-ratio:16/11}
+    .chrome .nav{display:none}
+    .exp .row{grid-template-columns:1fr;gap:5px}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="chrome">
+  <a class="logo" href="#" data-go="0">Samuel<b>.</b></a>
+  <nav class="nav" id="nav">
+    <a data-go="1">About</a><a data-go="2">Work</a><a data-go="7">Experience</a><a data-go="8">Contact</a>
+  </nav>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+  </button>
+</div>
+
+<div class="progress"><span class="count" id="count">01 / 09</span><span class="bar"><i id="barFill"></i></span><span class="hint">Scroll to move →</span></div>
+
+<div class="track" id="track">
+
+  <!-- 0 intro -->
+  <section class="panel">
+    <div class="intro">
+      <div class="eyebrow smallcaps"><span class="dot"></span> Open to interesting problems · San Francisco</div>
+      <h1>Samuel<span class="it">Bechar</span></h1>
+      <p class="sub">Software engineer building <em>apps</em>, <em>web experiences</em>, and <em>businesses</em> from the ground up.</p>
+      <span class="go"><span class="smallcaps" style="color:var(--accent)">Begin</span> <span class="arr">→</span></span>
+    </div>
+  </section>
+
+  <!-- 1 about -->
+  <section class="panel"><span class="pnum">00</span>
+    <div class="about">
+      <span class="smallcaps" style="color:var(--accent);display:block;margin-bottom:24px">About</span>
+      <p class="lede">A <em>Michigan CS grad</em> turned engineer at <em>Rubrik</em> — shipping apps for real patients, security for federal customers, and businesses from nothing but an idea.</p>
+      <div class="facts">
+        <div class="f"><div class="k">Role</div><div class="v">Software Engineer</div></div>
+        <div class="f"><div class="k">Company</div><div class="v">Rubrik</div></div>
+        <div class="f"><div class="k">Based in</div><div class="v">San Francisco</div></div>
+        <div class="f"><div class="k">Education</div><div class="v">U-M CS '25</div></div>
+      </div>
+      <div class="tags"><span>Swift</span><span>SwiftUI</span><span>Go</span><span>Scala</span><span>Python</span><span>React</span><span>React Native</span><span>GraphQL</span><span>Node.js</span><span>Firebase</span><span>TypeScript</span></div>
+    </div>
+  </section>
+
+  <!-- 2-6 projects -->
+  <section class="panel"><span class="pnum">01</span>
+    <div class="proj">
+      <a class="pic" href="https://samuelbechar.notion.site/Stir-98309cbf927f43189c0e4e8a4bd2d176" target="_blank" rel="noopener"><img src="../images/projects/stir.jpeg" alt="Stir"></a>
+      <div class="info"><div class="idx">Selected Work — 01</div><h2>Stir</h2><div class="cat smallcaps" style="color:var(--accent)">Business · Coffee supplement brand</div><p>A premium coffee-supplement brand — adaptogens formulated for focus and energy. Product, sourcing, branding, and store ops, end to end.</p><a class="read" href="https://samuelbechar.notion.site/Stir-98309cbf927f43189c0e4e8a4bd2d176" target="_blank" rel="noopener">Read the case ↗</a></div>
+    </div>
+  </section>
+  <section class="panel"><span class="pnum">02</span>
+    <div class="proj">
+      <a class="pic" href="https://samuelbechar.notion.site/Blitz-47841c12d67b489eb53b9888e5a9334a" target="_blank" rel="noopener"><img src="../images/projects/blitz.jpeg" alt="Blitz"></a>
+      <div class="info"><div class="idx">Selected Work — 02</div><h2>Blitz</h2><div class="cat smallcaps" style="color:var(--accent)">iOS · Swift</div><p>An app for indecisive friends and couples — set parameters, swipe through plans Tinder-style until everyone matches.</p><a class="read" href="https://samuelbechar.notion.site/Blitz-47841c12d67b489eb53b9888e5a9334a" target="_blank" rel="noopener">Read the case ↗</a></div>
+    </div>
+  </section>
+  <section class="panel"><span class="pnum">03</span>
+    <div class="proj">
+      <a class="pic" href="https://www.avicenna-medical.com/" target="_blank" rel="noopener"><img src="../images/projects/avitracker.jpg" alt="AviTracks"></a>
+      <div class="info"><div class="idx">Selected Work — 03</div><h2>AviTracks</h2><div class="cat smallcaps" style="color:var(--accent)">iOS · HealthKit</div><p>Remote patient monitoring that aggregates Apple Health data and streams it to physicians through Avicenna's platform.</p><a class="read" href="https://www.avicenna-medical.com/" target="_blank" rel="noopener">Visit ↗</a></div>
+    </div>
+  </section>
+  <section class="panel"><span class="pnum">04</span>
+    <div class="proj">
+      <a class="pic" href="https://samuelbechar.notion.site/Arize-Portfolio-5a988f77e66d4e66935bde76766b8892" target="_blank" rel="noopener"><img src="../images/projects/arize.png" alt="Arize"></a>
+      <div class="info"><div class="idx">Selected Work — 04</div><h2>Arize</h2><div class="cat smallcaps" style="color:var(--accent)">iOS · Node · Firebase</div><p>Deep Instagram analytics for creators — stats, content editing, and post scheduling on a Node + Firebase + Graph API backend.</p><a class="read" href="https://samuelbechar.notion.site/Arize-Portfolio-5a988f77e66d4e66935bde76766b8892" target="_blank" rel="noopener">Read the case ↗</a></div>
+    </div>
+  </section>
+  <section class="panel"><span class="pnum">05</span>
+    <div class="proj">
+      <a class="pic" href="https://samuelbechar.notion.site/Lux-Picnics-Ann-Arbor-c6a19506fac44c54b7a98c0feae4fbaf" target="_blank" rel="noopener"><img src="../images/projects/luxPicnics.jpeg" alt="Lux Picnics"></a>
+      <div class="info"><div class="idx">Selected Work — 05</div><h2>Lux Picnics</h2><div class="cat smallcaps" style="color:var(--accent)">Business · As seen on Local 4</div><p>Co-founded a luxury pop-up picnic company serving Ann Arbor — curated setups for proposals, celebrations, and events.</p><a class="read" href="https://samuelbechar.notion.site/Lux-Picnics-Ann-Arbor-c6a19506fac44c54b7a98c0feae4fbaf" target="_blank" rel="noopener">Read the case ↗</a></div>
+    </div>
+  </section>
+
+  <!-- 7 experience -->
+  <section class="panel"><span class="pnum">06</span>
+    <div class="exp">
+      <div class="h serif">Experience</div>
+      <div class="row"><div class="when">2024 —</div><div><h3>Software Engineer <a href="https://www.rubrik.com" target="_blank" rel="noopener">@ Rubrik</a></h3><p>Built Quorum Authorization for Rubrik Security Cloud — a multi-approver security feature for federal customers. Go · Scala · GraphQL · React.</p></div></div>
+      <div class="row"><div class="when">2023</div><div><h3>Mobile SWE Intern <a href="https://www.ally.com" target="_blank" rel="noopener">@ Ally Financial</a></h3><p>UI components for the Metronome design system across iOS (SwiftUI) and Android (React Native).</p></div></div>
+      <div class="row"><div class="when">2022</div><div><h3>iOS Developer Intern <a href="https://www.avicenna-medical.com/" target="_blank" rel="noopener">@ Avicenna Medical</a></h3><p>Remote patient monitoring iOS app via HealthKit, with two-factor auth and patient permission flows.</p></div></div>
+      <div class="row"><div class="when">2021</div><div><h3>Web Dev Intern <a href="https://www.avicenna-medical.com/" target="_blank" rel="noopener">@ Avicenna Medical</a></h3><p>Led the company website revamp to new design specs.</p></div></div>
+    </div>
+  </section>
+
+  <!-- 8 contact -->
+  <section class="panel"><span class="pnum">07</span>
+    <div class="contact">
+      <span class="smallcaps" style="color:var(--accent)">Contact — End</span>
+      <a class="mega serif" href="mailto:samuel@samuelbechar.com">Let's talk</a>
+      <div class="links">
+        <a href="mailto:samuel@samuelbechar.com">samuel@samuelbechar.com</a>
+        <a href="https://github.com/samuelbechar" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://linkedin.com/in/samuelbechar" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  const root=document.documentElement;
+  const saved=localStorage.getItem('theme'); if(saved)root.dataset.theme=saved;
+  document.getElementById('themeToggle').addEventListener('click',()=>{const n=root.dataset.theme==='dark'?'light':'dark';root.dataset.theme=n;localStorage.setItem('theme',n)});
+
+  const track=document.getElementById('track');
+  const panels=[...track.querySelectorAll('.panel')];
+  const count=document.getElementById('count'),fill=document.getElementById('barFill');
+  const isHorizontal=()=>matchMedia('(min-width:761px)').matches && !matchMedia('(pointer:coarse)').matches;
+
+  let idx=0,animating=false;
+  function goTo(i){
+    idx=Math.max(0,Math.min(panels.length-1,i));
+    if(isHorizontal()){
+      track.scrollTo({left:idx*track.clientWidth,behavior:'smooth'});
+      animating=true;clearTimeout(goTo._t);goTo._t=setTimeout(()=>{animating=false;render()},700);
+    }else{
+      panels[idx].scrollIntoView({behavior:'smooth'});
+    }
+    render();
+  }
+  function render(){
+    const p=panels.length>1?idx/(panels.length-1):0;
+    fill.style.width=(p*100)+'%';
+    count.textContent=String(idx+1).padStart(2,'0')+' / '+String(panels.length).padStart(2,'0');
+  }
+
+  // wheel gesture → one panel at a time
+  window.addEventListener('wheel',e=>{
+    if(!isHorizontal())return;
+    e.preventDefault();
+    if(animating)return;
+    const d=Math.abs(e.deltaY)>=Math.abs(e.deltaX)?e.deltaY:e.deltaX;
+    if(d>6)goTo(idx+1); else if(d<-6)goTo(idx-1);
+  },{passive:false});
+
+  // keyboard
+  addEventListener('keydown',e=>{
+    if(!isHorizontal())return;
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '){e.preventDefault();goTo(idx+1);}
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();goTo(idx-1);}
+  });
+
+  // nav + logo jump
+  document.querySelectorAll('[data-go]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();goTo(+el.dataset.go)}));
+
+  // keep aligned on resize
+  addEventListener('resize',()=>{if(isHorizontal())track.scrollLeft=idx*track.clientWidth});
+  render();
+</script>
+</body>
+</html>

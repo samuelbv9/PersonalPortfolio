@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Work — departments — Samuel Bechar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f3efe6;--paper:#faf7f0;--ink:#191713;--ink-soft:#5c574e;--ink-faint:#928b7c;
+    --line:#ddd6c7;--line-strong:#c9c1ad;--accent:#9c3b22;--accent2:#345b6e;
+    --frame-shadow:0 24px 56px -28px rgba(40,30,15,.45);
+  }
+  [data-theme="dark"]{
+    --bg:#13100c;--paper:#1c1813;--ink:#efe6d6;--ink-soft:#a99a83;--ink-faint:#6f6552;
+    --line:rgba(255,255,255,.11);--line-strong:rgba(255,255,255,.2);--accent:#c7984f;--accent2:#8fb2c4;
+    --frame-shadow:0 28px 60px -30px rgba(0,0,0,.75);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,sans-serif;font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .4s,color .4s}
+  a{color:inherit;text-decoration:none}
+  .serif{font-family:"Fraunces",serif}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 44px}
+  @media(max-width:680px){.wrap{padding:0 24px}}
+  .sc{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+
+  .theme-toggle{position:fixed;top:20px;right:24px;z-index:80;width:38px;height:38px;border-radius:50%;border:1px solid var(--line-strong);background:var(--bg);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:.25s}
+  .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:rotate(15deg)}
+  .theme-toggle svg{width:16px;height:16px}.ic-sun{display:none}.ic-moon{display:block}
+  [data-theme="dark"] .ic-sun{display:block}[data-theme="dark"] .ic-moon{display:none}
+
+  .top{display:flex;align-items:center;justify-content:space-between;padding:26px 0 60px}
+  .top .logo{font-family:"Fraunces",serif;font-size:21px}
+
+  /* section title */
+  .sect-head{padding-top:20px;margin-bottom:6px}
+  .sect-head .sc{color:var(--accent)}
+  .sect-head h2{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(30px,5vw,58px);letter-spacing:-.02em;margin-top:10px}
+
+  /* department header */
+  .dept{display:flex;align-items:baseline;gap:18px;padding:58px 0 6px}
+  .dept h3{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(22px,2.8vw,32px);letter-spacing:-.01em;white-space:nowrap}
+  .dept .num{font-family:"Fraunces",serif;font-style:italic;color:var(--accent);font-size:16px}
+  .dept .ln{flex:1;height:1px;background:var(--line-strong)}
+  .dept .count{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);white-space:nowrap}
+
+  /* feature rows (businesses + apps) */
+  .feature{display:grid;grid-template-columns:repeat(12,1fr);gap:26px;padding:40px 0;border-bottom:1px solid var(--line);align-items:center}
+  .feature .idx{grid-column:1/2;font-family:"Fraunces",serif;font-size:clamp(24px,3.4vw,42px);color:var(--accent);line-height:.9}
+  .feature .pic{grid-column:2/7;aspect-ratio:5/4;overflow:hidden;border-radius:3px;border:1px solid var(--line);box-shadow:var(--frame-shadow);background:var(--paper)}
+  .feature .pic img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .feature:hover .pic img{transform:scale(1.05)}
+  .feature .pic.logo{background:var(--paper)}
+  .feature .pic.logo img{object-fit:contain;padding:14%;mix-blend-mode:multiply}
+  [data-theme="dark"] .feature .pic.logo{background:#fff;border-color:var(--line-strong)}
+  [data-theme="dark"] .feature .pic.logo img{mix-blend-mode:normal}
+  .feature .info{grid-column:8/13}
+  .feature:nth-of-type(even) .pic{grid-column:8/13;order:2}
+  .feature:nth-of-type(even) .info{grid-column:2/8}
+  .feature h4{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(28px,4.4vw,54px);line-height:.98;transition:color .3s}
+  .feature:hover h4{color:var(--accent)}
+  .feature .cat{margin:12px 0 12px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+  .feature p{color:var(--ink-soft);max-width:46ch;font-size:15.5px}
+  .feature .read{margin-top:16px;display:inline-block;font-size:13.5px;border-bottom:1px solid var(--line-strong);padding-bottom:3px;transition:.25s}
+  .feature .read:hover{color:var(--accent);border-color:var(--accent)}
+  @media(max-width:880px){
+    .feature,.feature:nth-of-type(even){grid-template-columns:1fr;gap:14px}
+    .feature .idx,.feature .pic,.feature .info,.feature:nth-of-type(even) .pic,.feature:nth-of-type(even) .info{grid-column:auto;order:0}
+    .feature .pic{aspect-ratio:16/10}
+  }
+
+  /* making — lighter grid of small tiles */
+  .making{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:34px 0 10px}
+  @media(max-width:680px){.making{grid-template-columns:1fr}}
+  .make{border:1px solid var(--line);border-radius:4px;padding:24px;min-height:180px;display:flex;flex-direction:column;justify-content:space-between;background:var(--paper);transition:.3s}
+  .make:hover{border-color:var(--line-strong);transform:translateY(-3px)}
+  .make .t{font-family:"Fraunces",serif;font-size:22px}
+  .make .d{font-size:14px;color:var(--ink-soft);margin-top:8px}
+  .make .tag{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+  .making-note{color:var(--ink-faint);font-size:13.5px;font-style:italic;font-family:"Fraunces",serif;margin-top:14px}
+</style>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+  <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+  <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+</button>
+
+<div class="wrap">
+  <div class="top"><span class="logo">Samuel<span style="color:var(--accent)">.</span></span><span class="sc">Selected Work — by kind</span></div>
+
+  <div class="sect-head"><span class="sc">Selected Work</span><h2 class="serif">Things I've made</h2></div>
+
+  <!-- DEPARTMENT: Businesses -->
+  <div class="dept"><span class="num">01</span><h3 class="serif">Businesses</h3><span class="ln"></span><span class="count">2 ventures</span></div>
+
+  <article class="feature">
+    <div class="idx">01</div>
+    <a class="pic" href="#"><img src="../images/projects/stir.jpeg" alt="Stir"></a>
+    <div class="info"><h4 class="serif">Stir</h4><div class="cat">Coffee supplement brand · E-commerce</div><p>A premium coffee-supplement brand — adaptogens formulated for focus and energy. Product, sourcing, branding, and store ops, end to end.</p><a class="read" href="#">View project ↗</a></div>
+  </article>
+  <article class="feature">
+    <div class="idx">02</div>
+    <a class="pic" href="#"><img src="../images/projects/luxPicnics.jpeg" alt="Lux Picnics"></a>
+    <div class="info"><h4 class="serif">Lux Picnics</h4><div class="cat">Luxury pop-up events · As seen on Local 4</div><p>Co-founded a luxury pop-up picnic company in Ann Arbor — curated setups for proposals, celebrations, and events.</p><a class="read" href="#">View project ↗</a></div>
+  </article>
+
+  <!-- DEPARTMENT: Apps & Web -->
+  <div class="dept"><span class="num">02</span><h3 class="serif">Apps &amp; Web</h3><span class="ln"></span><span class="count">3 projects</span></div>
+
+  <article class="feature">
+    <div class="idx">03</div>
+    <a class="pic logo" href="#"><img src="../images/projects/blitz.jpeg" alt="Blitz"></a>
+    <div class="info"><h4 class="serif">Blitz</h4><div class="cat">iOS · Swift</div><p>An app for indecisive friends and couples — set parameters, then swipe through plans Tinder-style until everyone matches.</p><a class="read" href="#">View project ↗</a></div>
+  </article>
+  <article class="feature">
+    <div class="idx">04</div>
+    <a class="pic logo" href="#"><img src="../images/projects/avitracker.jpg" alt="AviTracks"></a>
+    <div class="info"><h4 class="serif">AviTracks</h4><div class="cat">iOS · HealthKit</div><p>Remote patient monitoring that aggregates Apple Health data and streams it to physicians through Avicenna's platform.</p><a class="read" href="#">Visit site ↗</a></div>
+  </article>
+  <article class="feature">
+    <div class="idx">05</div>
+    <a class="pic logo" href="#"><img src="../images/projects/arize.png" alt="Arize"></a>
+    <div class="info"><h4 class="serif">Arize</h4><div class="cat">iOS · Node · Firebase</div><p>Deep Instagram analytics for creators — stats, content editing, and post scheduling on a Node + Firebase + Graph API backend.</p><a class="read" href="#">View project ↗</a></div>
+  </article>
+
+  <!-- DEPARTMENT: Making -->
+  <div class="dept"><span class="num">03</span><h3 class="serif">Making</h3><span class="ln"></span><span class="count">off the keyboard</span></div>
+  <div class="making">
+    <div class="make"><span class="tag">Woodworking</span><div><div class="t serif">Furniture &amp; shelves</div><div class="d">Hand-built pieces for the apartment — a walnut desk, floating shelves, a coffee table.</div></div></div>
+    <div class="make"><span class="tag">Coming soon</span><div><div class="t serif">Add your own</div><div class="d">A slot for whatever you make next — photos, a caption, a link.</div></div></div>
+    <div class="make"><span class="tag">Coming soon</span><div><div class="t serif">…and more</div><div class="d">Anything hands-on you want to show lives here, apart from the screen work.</div></div></div>
+  </div>
+  <p class="making-note">Placeholder — drop in real photos of the woodworking and this becomes a proper little gallery.</p>
+
+  <div style="height:80px"></div>
+</div>
+
+<script>
+  const root=document.documentElement;
+  const saved=localStorage.getItem('theme'); if(saved)root.dataset.theme=saved;
+  document.getElementById('themeToggle').addEventListener('click',()=>{const n=root.dataset.theme==='dark'?'light':'dark';root.dataset.theme=n;localStorage.setItem('theme',n)});
+</script>
+</body>
+</html>

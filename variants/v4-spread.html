@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Samuel Bechar — Software Engineer & Builder</title>
+<meta name="description" content="Samuel Bechar — Software Engineer at Rubrik. Building apps, web experiences, and businesses from the ground up." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f3efe6;--paper:#faf7f0;--ink:#191713;--ink-soft:#5c574e;
+    --line:#ddd6c7;--line-strong:#c9c1ad;--accent:#9c3b22;--accent2:#345b6e;--glow:rgba(156,59,34,.4);
+    --frame-shadow:0 24px 56px -28px rgba(40,30,15,.45);
+  }
+  [data-theme="dark"]{
+    --bg:#13100c;--paper:#1c1813;--ink:#efe6d6;--ink-soft:#a99a83;
+    --line:rgba(255,255,255,.11);--line-strong:rgba(255,255,255,.2);--accent:#c7984f;--accent2:#8fb2c4;--glow:rgba(199,152,79,.5);
+    --frame-shadow:0 28px 60px -30px rgba(0,0,0,.75);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,sans-serif;font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .4s,color .4s}
+  ::selection{background:var(--accent);color:var(--bg)}
+  a{color:inherit;text-decoration:none}
+  .serif{font-family:"Fraunces",serif}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 38px}
+  @media(max-width:680px){.wrap{padding:0 22px}}
+  .smallcaps{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+
+  /* theme toggle — floating */
+  .theme-toggle{position:fixed;top:22px;right:26px;z-index:60;width:38px;height:38px;border-radius:50%;border:1px solid var(--line-strong);background:var(--bg);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:.25s}
+  .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:rotate(15deg)}
+  .theme-toggle svg{width:16px;height:16px}.ic-sun{display:none}.ic-moon{display:block}
+  [data-theme="dark"] .ic-sun{display:block}[data-theme="dark"] .ic-moon{display:none}
+
+  /* ── HERO (thesis) ── */
+  .hero{min-height:100vh;display:flex;flex-direction:column}
+  .hero .wrap{width:100%}
+  .hero .toprow{display:flex;align-items:center;justify-content:space-between;padding:26px 0}
+  .hero .toprow nav{display:flex;gap:26px;font-size:13.5px}
+  .hero .toprow nav a{opacity:.7;transition:.25s}
+  .hero .toprow nav a:hover{opacity:1;color:var(--accent)}
+  @media(max-width:680px){.hero .toprow nav{display:none}}
+  .hero .hbody{flex:1;display:flex;flex-direction:column;justify-content:center;padding-bottom:40px}
+  .hero .who{font-family:"Fraunces",serif;font-size:clamp(20px,2.4vw,26px);font-weight:400;margin-bottom:32px}
+  .hero .thesis{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(48px,9.2vw,140px);line-height:.98;letter-spacing:-.025em;max-width:15ch}
+  .hero .thesis .sw{color:var(--accent2);font-style:italic}
+  .hero .thesis .bz{color:var(--accent);font-style:italic}
+  .hero .hsub{margin-top:38px;max-width:56ch;font-size:clamp(16px,1.7vw,20px);color:var(--ink-soft)}
+  .hero .hsub a{color:var(--ink);border-bottom:1px solid var(--line-strong);transition:.25s}
+  .hero .hsub a:hover{border-color:var(--accent)}
+  .hero .hfoot{display:flex;align-items:center;gap:18px;padding-bottom:30px}
+  .hero .hfoot .cue{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap;transition:.25s}
+  .hero .hfoot .cue:hover{color:var(--accent)}
+  .hero .hfoot .cue-line{flex:1;height:1px;background:var(--line-strong)}
+
+  /* ── MASTHEAD (unused; kept for reference) ── */
+  .masthead{padding:102px 0 38px;border-bottom:2px solid var(--ink)}
+  @media(max-width:680px){.masthead{padding:82px 0 28px}}
+  .masthead .toprow{display:flex;justify-content:space-between;align-items:center;margin-bottom:54px}
+  .masthead .toprow nav{display:flex;gap:26px;font-size:13.5px}
+  .masthead .toprow nav a{opacity:.7;transition:.25s}.masthead .toprow nav a:hover{opacity:1;color:var(--accent)}
+  @media(max-width:680px){.masthead .toprow nav{display:none}}
+  .mast-title{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(30px,7.8vw,116px);line-height:.9;letter-spacing:-.03em;text-align:center}
+  .mast-title .amp{font-style:italic;color:var(--accent)}
+  .mast-sub{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:end;margin-top:38px}
+  .mast-sub .l{text-align:left}.mast-sub .r{text-align:right}
+  .mast-sub .c{font-family:"Fraunces",serif;font-style:italic;font-size:clamp(15px,2vw,20px);text-align:center;color:var(--accent)}
+  @media(max-width:680px){.mast-sub{grid-template-columns:1fr;text-align:center;gap:10px}.mast-sub .l,.mast-sub .r{text-align:center}}
+
+  /* lede strip under masthead */
+  .lede-strip{flex:1;display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-content:center;padding:46px 0;border-bottom:1px solid var(--line)}
+  .lede-strip .dropcap{grid-column:1/9;grid-row:1;font-family:"Fraunces",serif;font-weight:300;font-size:clamp(18px,1.9vw,23px);line-height:1.5}
+  .lede-strip .dropcap::first-letter{font-size:2.5em;line-height:.85;float:left;font-weight:400;padding:5px 11px 0 0;color:var(--accent)}
+  .lede-strip .dropcap em{font-style:italic;color:var(--accent)}
+  .lede-strip .dropcap a{text-decoration:none;border-bottom:1px solid var(--line-strong);transition:border-color .25s}
+  .lede-strip .dropcap a:hover{border-color:var(--accent)}
+  .lede-strip .margin{grid-column:10/13;grid-row:1;border-left:1px solid var(--line);padding-left:22px}
+  .lede-strip .margin .smallcaps{margin-bottom:12px;display:block}
+  .lede-strip .margin .row{display:flex;justify-content:space-between;font-size:13.5px;padding:7px 0;border-bottom:1px dotted var(--line-strong)}
+  .lede-strip .margin .row span:first-child{color:var(--ink-soft)}
+  /* live widgets under the quote */
+  .widgets{grid-column:1/13;grid-row:2;display:flex;margin-top:52px;padding-top:28px;border-top:1px solid var(--line)}
+  .widget{flex:1;padding-right:34px;margin-right:34px;border-right:1px solid var(--line);text-decoration:none;color:inherit}
+  .widget:last-child{border-right:0;margin-right:0;padding-right:0}
+  a.widget:hover .v{color:var(--accent)}
+  .widget .k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);display:flex;align-items:center;gap:7px;white-space:nowrap}
+  .widget .live{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2.4s infinite;flex-shrink:0}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 var(--glow)}70%{box-shadow:0 0 0 7px transparent}100%{box-shadow:0 0 0 0 transparent}}
+  .widget .v{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(21px,2.3vw,29px);line-height:1;margin-top:14px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .widget .u{font-size:12.5px;color:var(--ink-soft);margin-top:8px}
+  @media(max-width:880px){
+    .lede-strip{grid-template-columns:1fr}
+    .lede-strip .dropcap,.lede-strip .margin,.lede-strip .widgets{grid-column:auto;grid-row:auto}
+    .lede-strip .margin{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:22px}
+    .widgets{flex-wrap:wrap;margin-top:32px}
+    .widget{flex:1 1 42%;border-right:0;margin:0;padding:16px 0;border-bottom:1px solid var(--line)}
+  }
+
+  /* section header w/ folio */
+  .folio{display:flex;align-items:baseline;justify-content:space-between;padding:64px 0 30px;border-bottom:1px solid var(--line)}
+  .folio h2{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(28px,4vw,46px);letter-spacing:-.02em}
+  .folio .pg{font-family:"Fraunces",serif;font-style:italic;color:var(--ink-soft);font-size:15px}
+
+  /* ── FEATURES (work) ── */
+  .feature{display:grid;grid-template-columns:repeat(12,1fr);gap:26px;padding:46px 0;border-bottom:1px solid var(--line);align-items:center}
+  .feature .num{grid-column:1/2;font-family:"Fraunces",serif;font-size:clamp(28px,4vw,50px);color:var(--accent);line-height:.9}
+  .feature .pic{grid-column:2/7;aspect-ratio:5/4;overflow:hidden;border-radius:3px;border:1px solid var(--line);box-shadow:var(--frame-shadow);background:var(--paper)}
+  .feature .pic img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  /* logo-style assets: multiply-blend so white backgrounds dissolve into the cream tile */
+  .feature .pic.media-logo{background:var(--paper)}
+  .feature .pic.media-logo img{object-fit:contain;padding:13%;mix-blend-mode:multiply}
+  [data-theme="dark"] .feature .pic.media-logo{background:#fff;border-color:var(--line-strong)}
+  [data-theme="dark"] .feature .pic.media-logo img{mix-blend-mode:normal}
+  .feature:hover .pic img{transform:scale(1.05)}
+  .feature .body{grid-column:8/13}
+  .feature .body h3{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(30px,4.6vw,58px);line-height:.96;letter-spacing:-.01em;transition:color .3s}
+  .feature:hover .body h3{color:var(--accent)}
+  .feature .body .cat{margin:14px 0 14px;display:flex;gap:14px;align-items:center}
+  .feature .body .cat .smallcaps{color:var(--accent)}
+  .feature .body p{color:var(--ink-soft);max-width:46ch;font-size:15.5px}
+  .feature .body .read{margin-top:18px;display:inline-flex;align-items:center;gap:8px;font-size:13.5px;border-bottom:1px solid var(--line-strong);padding-bottom:3px;transition:.25s}
+  .feature .body .read:hover{color:var(--accent);border-color:var(--accent)}
+  /* alternate: even features mirror */
+  .feature:nth-child(even) .pic{grid-column:8/13;order:2}
+  .feature:nth-child(even) .body{grid-column:2/8}
+  .feature:nth-child(even) .num{order:0}
+  @media(max-width:880px){
+    .feature,.feature:nth-child(even){grid-template-columns:1fr;gap:16px}
+    .feature .num,.feature .pic,.feature .body,.feature:nth-child(even) .pic,.feature:nth-child(even) .body{grid-column:auto;order:0}
+    .feature .pic{aspect-ratio:16/10}
+  }
+
+  /* ── EXPERIENCE — ruled ledger ── */
+  .ledger{padding:20px 0 0}
+  .led-row{display:grid;grid-template-columns:1fr 2.4fr;gap:30px;padding:26px 0;border-bottom:1px solid var(--line)}
+  .led-row .when{font-family:"Fraunces",serif;font-style:italic;font-size:18px;color:var(--accent)}
+  .led-row .what h3{font-family:"Fraunces",serif;font-weight:400;font-size:23px;margin-bottom:8px}
+  .led-row .what h3 a{color:var(--accent)}
+  .led-row .what p{color:var(--ink-soft);font-size:15px;max-width:62ch}
+  @media(max-width:680px){.led-row{grid-template-columns:1fr;gap:6px}}
+
+  /* stack inline */
+  .stack-strip{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;padding:40px 0;border-bottom:1px solid var(--line)}
+  .stack-strip .smallcaps{grid-column:1/3}
+  .stack-strip .tags{grid-column:3/13;display:flex;flex-wrap:wrap;gap:8px}
+  .stack-strip .tags span{border:1px solid var(--line-strong);padding:6px 13px;border-radius:30px;font-size:13.5px;transition:.25s}
+  .stack-strip .tags span:hover{border-color:var(--accent);color:var(--accent)}
+  @media(max-width:680px){.stack-strip{grid-template-columns:1fr}.stack-strip .smallcaps,.stack-strip .tags{grid-column:auto}}
+
+  /* ── COLOPHON / contact ── */
+  .colophon{text-align:center;padding:120px 0 130px;border-top:2px solid var(--ink);margin-top:70px}
+  .colophon .smallcaps{margin-bottom:24px;display:block}
+  .mega{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(56px,13vw,190px);line-height:.88;letter-spacing:-.02em;display:inline-block;transition:.4s}
+  .mega:hover{color:var(--accent);font-style:italic}
+  .colophon .links{display:flex;gap:38px;justify-content:center;margin-top:44px;flex-wrap:wrap;font-size:15px}
+  .colophon .links a{opacity:.74;border-bottom:1px solid transparent;padding-bottom:2px;transition:.25s}
+  .colophon .links a:hover{opacity:1;border-color:var(--accent)}
+  .foot{display:flex;justify-content:space-between;padding:26px 0 50px;font-size:12.5px;color:var(--ink-soft);flex-wrap:wrap;gap:10px}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+  <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+  <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+</button>
+
+<div class="wrap" id="top">
+
+  <div class="hero">
+    <div class="wrap toprow">
+      <span class="smallcaps">Portfolio — 2026</span>
+      <nav><a href="#work">Work</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav>
+      <span class="smallcaps">San Francisco, CA</span>
+    </div>
+    <div class="wrap hbody">
+      <div class="who serif">Samuel Bechar</div>
+      <h1 class="thesis"><span class="sw">iOS</span> &amp; <span class="bz">full-stack</span><br>engineer.</h1>
+      <p class="hsub">Building authentication and authorization at <a href="https://www.rubrik.com" target="_blank" rel="noopener">Rubrik</a>. Michigan CS '25, based in San Francisco.</p>
+    </div>
+    <div class="wrap hfoot"><a class="cue" href="#work">Selected work ↓</a><span class="cue-line"></span></div>
+  </div><!-- /hero -->
+
+  <div class="folio" id="work"><h2>Selected Work</h2><span class="pg">Five projects</span></div>
+
+  <article class="feature reveal">
+    <div class="num">01</div>
+    <a class="pic" href="https://samuelbechar.notion.site/Stir-98309cbf927f43189c0e4e8a4bd2d176" target="_blank" rel="noopener"><img src="../images/projects/stir.jpeg" alt="Stir"></a>
+    <div class="body">
+      <h3>Stir</h3>
+      <div class="cat"><span class="smallcaps">Business</span><span class="smallcaps" style="color:var(--ink-soft)">Coffee supplement brand</span></div>
+      <p>A premium coffee-supplement brand — adaptogens formulated for focus and energy. Product, sourcing, branding, and store operations, end to end.</p>
+      <a class="read" href="https://samuelbechar.notion.site/Stir-98309cbf927f43189c0e4e8a4bd2d176" target="_blank" rel="noopener">View project ↗</a>
+    </div>
+  </article>
+
+  <article class="feature reveal">
+    <div class="num">02</div>
+    <a class="pic media-logo" href="https://samuelbechar.notion.site/Blitz-47841c12d67b489eb53b9888e5a9334a" target="_blank" rel="noopener"><img src="../images/projects/blitz.jpeg" alt="Blitz"></a>
+    <div class="body">
+      <h3>Blitz</h3>
+      <div class="cat"><span class="smallcaps">iOS</span><span class="smallcaps" style="color:var(--ink-soft)">Swift</span></div>
+      <p>An app for indecisive friends and couples — set parameters, then swipe through plans Tinder-style until everyone matches.</p>
+      <a class="read" href="https://samuelbechar.notion.site/Blitz-47841c12d67b489eb53b9888e5a9334a" target="_blank" rel="noopener">View project ↗</a>
+    </div>
+  </article>
+
+  <article class="feature reveal">
+    <div class="num">03</div>
+    <a class="pic media-logo" href="https://www.avicenna-medical.com/" target="_blank" rel="noopener"><img src="../images/projects/avitracker.jpg" alt="AviTracks"></a>
+    <div class="body">
+      <h3>AviTracks</h3>
+      <div class="cat"><span class="smallcaps">iOS</span><span class="smallcaps" style="color:var(--ink-soft)">HealthKit</span></div>
+      <p>Remote patient monitoring that aggregates Apple Health data and streams it to physicians through Avicenna's platform.</p>
+      <a class="read" href="https://www.avicenna-medical.com/" target="_blank" rel="noopener">Visit site ↗</a>
+    </div>
+  </article>
+
+  <article class="feature reveal">
+    <div class="num">04</div>
+    <a class="pic media-logo" href="https://samuelbechar.notion.site/Arize-Portfolio-5a988f77e66d4e66935bde76766b8892" target="_blank" rel="noopener"><img src="../images/projects/arize.png" alt="Arize"></a>
+    <div class="body">
+      <h3>Arize</h3>
+      <div class="cat"><span class="smallcaps">iOS</span><span class="smallcaps" style="color:var(--ink-soft)">Node · Firebase</span></div>
+      <p>Deep Instagram analytics for creators — stats, content editing, and post scheduling on a Node + Firebase + Graph API backend.</p>
+      <a class="read" href="https://samuelbechar.notion.site/Arize-Portfolio-5a988f77e66d4e66935bde76766b8892" target="_blank" rel="noopener">View project ↗</a>
+    </div>
+  </article>
+
+  <article class="feature reveal">
+    <div class="num">05</div>
+    <a class="pic" href="https://samuelbechar.notion.site/Lux-Picnics-Ann-Arbor-c6a19506fac44c54b7a98c0feae4fbaf" target="_blank" rel="noopener"><img src="../images/projects/luxPicnics.jpeg" alt="Lux Picnics"></a>
+    <div class="body">
+      <h3>Lux Picnics</h3>
+      <div class="cat"><span class="smallcaps">Business</span><span class="smallcaps" style="color:var(--ink-soft)">As seen on Local 4</span></div>
+      <p>Co-founded a luxury pop-up picnic company serving Ann Arbor — curated setups for proposals, celebrations, and events.</p>
+      <a class="read" href="https://samuelbechar.notion.site/Lux-Picnics-Ann-Arbor-c6a19506fac44c54b7a98c0feae4fbaf" target="_blank" rel="noopener">View project ↗</a>
+    </div>
+  </article>
+
+  <div class="stack-strip reveal">
+    <span class="smallcaps">Stack</span>
+    <div class="tags"><span>Swift</span><span>SwiftUI</span><span>Go</span><span>Scala</span><span>Python</span><span>React</span><span>React Native</span><span>GraphQL</span><span>Node.js</span><span>Firebase</span><span>TypeScript</span></div>
+  </div>
+
+  <div class="folio" id="experience"><h2>Experience</h2><span class="pg">2021 — present</span></div>
+  <div class="ledger">
+    <div class="led-row reveal"><div class="when">2024 —</div><div class="what"><h3>Software Engineer <a href="https://www.rubrik.com" target="_blank" rel="noopener">@ Rubrik</a></h3><p>Built Quorum Authorization for Rubrik Security Cloud — a configurable multi-approver security feature for federal customers. Full-stack across Go, Scala, GraphQL, and React; presented to leadership and shipped to production.</p></div></div>
+    <div class="led-row reveal"><div class="when">2023</div><div class="what"><h3>Mobile SWE Intern <a href="https://www.ally.com" target="_blank" rel="noopener">@ Ally Financial</a></h3><p>Built UI components for the Metronome design system across iOS (SwiftUI) and Android (React Native), and presented developer-onboarding research to executive leadership.</p></div></div>
+    <div class="led-row reveal"><div class="when">2022</div><div class="what"><h3>iOS Developer Intern <a href="https://www.avicenna-medical.com/" target="_blank" rel="noopener">@ Avicenna Medical</a></h3><p>Built a remote patient monitoring iOS app collecting Apple Watch and iPhone health data via HealthKit, with two-factor auth and patient permission flows.</p></div></div>
+    <div class="led-row reveal"><div class="when">2021</div><div class="what"><h3>Web Dev Intern <a href="https://www.avicenna-medical.com/" target="_blank" rel="noopener">@ Avicenna Medical</a></h3><p>Led the company website revamp to new design specs, working directly with the co-founder and head of marketing.</p></div></div>
+  </div>
+
+  <section class="colophon" id="contact">
+    <span class="smallcaps">Contact</span>
+    <a class="mega serif" href="mailto:samuel@samuelbechar.com">Let's talk</a>
+    <div class="links">
+      <a href="mailto:samuel@samuelbechar.com">samuel@samuelbechar.com</a>
+      <a href="https://github.com/samuelbechar" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://linkedin.com/in/samuelbechar" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </section>
+  <div class="foot"><span>© 2026 Samuel Bechar</span><span>Built in San Francisco</span></div>
+
+</div>
+
+<script>
+  const root=document.documentElement;
+  const saved=localStorage.getItem('theme'); if(saved)root.dataset.theme=saved;
+  document.getElementById('themeToggle').addEventListener('click',()=>{const n=root.dataset.theme==='dark'?'light':'dark';root.dataset.theme=n;localStorage.setItem('theme',n)});
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samuel Bechar — Software Engineer</title>
+  <meta name="description" content="Samuel Bechar — Software Engineer at Rubrik. University of Michigan CS grad building mobile apps, web experiences, and businesses from the ground up." />
+  <meta property="og:title" content="Samuel Bechar — Software Engineer" />
+  <meta property="og:description" content="Software engineer at Rubrik building apps, products, and businesses from the ground up." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230c0c0a'/%3E%3Ctext x='32' y='44' font-family='Arial Black,sans-serif' font-size='30' font-weight='900' fill='%23c8ff2e' text-anchor='middle'%3ESB%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Film grain overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Custom cursor (desktop) -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- Intro loader -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-name">SB</div>
+    <div class="loader-bar"><span id="loaderFill"></span></div>
+  </div>
+
+  <!-- Nav -->
+  <header class="nav" id="nav">
+    <a class="nav-logo" href="#top">SB<span class="nav-logo-dot">.</span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#about"><sup>01</sup>About</a>
+      <a href="#work"><sup>02</sup>Work</a>
+      <a href="#experience"><sup>03</sup>Experience</a>
+      <a href="#contact"><sup>04</sup>Contact</a>
+      <a href="/resume.pdf" target="_blank" rel="noopener" class="nav-resume">Resume ↗</a>
+    </nav>
+    <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Fullscreen mobile menu -->
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+    <nav class="menu-links" aria-label="Mobile">
+      <a href="#about"><sup>01</sup>About</a>
+      <a href="#work"><sup>02</sup>Work</a>
+      <a href="#experience"><sup>03</sup>Experience</a>
+      <a href="#contact"><sup>04</sup>Contact</a>
+      <a href="/resume.pdf" target="_blank" rel="noopener"><sup>05</sup>Resume ↗</a>
+    </nav>
+    <div class="menu-foot mono">San Francisco, CA — <span data-clock>00:00:00</span></div>
+  </div>
+
+  <main id="top">
+
+    <!-- ─── HERO ─────────────────────────────────────────────── -->
+    <section class="hero">
+      <canvas id="heroCanvas" aria-hidden="true"></canvas>
+
+      <div class="hero-meta mono">
+        <span class="hero-meta-item"><span class="pulse" aria-hidden="true"></span>Open to interesting problems</span>
+        <span class="hero-meta-item">San Francisco, CA</span>
+        <span class="hero-meta-item"><span data-clock>00:00:00</span> PT</span>
+      </div>
+
+      <h1 class="hero-name" aria-label="Samuel Bechar">
+        <span class="hero-line"><span class="hero-word">SAMUEL</span></span>
+        <span class="hero-line hero-line-2">
+          <span class="hero-word hero-word-outline">BECHAR</span>
+          <span class="hero-serif">software engineer</span>
+        </span>
+      </h1>
+
+      <div class="hero-foot">
+        <p class="hero-blurb">Building <em>mobile apps</em>, <em>web experiences</em>, and <em>businesses</em> from the ground up. Currently engineering at Rubrik.</p>
+        <div class="hero-roles mono" aria-hidden="true">
+          <span>SWE @ RUBRIK</span>
+          <span>UMICH CS '25</span>
+          <span>iOS · FULL-STACK</span>
+        </div>
+      </div>
+
+      <a class="hero-scroll mono" href="#about" aria-label="Scroll to about">SCROLL<span class="hero-scroll-line" aria-hidden="true"></span></a>
+    </section>
+
+    <!-- ─── MARQUEE ──────────────────────────────────────────── -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-chunk">SOFTWARE ENGINEER <i>✦</i> BUILDER <i>✦</i> iOS <i>✦</i> FULL-STACK <i>✦</i> FOUNDER <i>✦</i> </span><span class="marquee-chunk">SOFTWARE ENGINEER <i>✦</i> BUILDER <i>✦</i> iOS <i>✦</i> FULL-STACK <i>✦</i> FOUNDER <i>✦</i> </span>
+      </div>
+    </div>
+
+    <!-- ─── ABOUT ────────────────────────────────────────────── -->
+    <section class="about section" id="about">
+      <div class="section-head reveal">
+        <span class="section-num mono">01</span>
+        <h2 class="section-title">WHO I AM</h2>
+      </div>
+
+      <div class="about-grid">
+        <p class="about-lede reveal">
+          I'm a <em>Michigan CS grad</em> turned software engineer at <em>Rubrik</em>. I've shipped iOS apps used by real patients, security features built for federal customers, and I've co-founded businesses with nothing but an idea and a brother who said <em>“why not.”</em>
+        </p>
+
+        <div class="about-side">
+          <div class="stat reveal">
+            <span class="stat-label mono">AGE — LIVE</span>
+            <span class="stat-value" id="ageCounter">00.000000000</span>
+            <span class="stat-unit mono">YEARS &amp; COUNTING</span>
+          </div>
+          <div class="stat reveal">
+            <span class="stat-label mono">COFFEE THIS YEAR</span>
+            <span class="stat-value" id="coffeeCounter">0</span>
+            <span class="stat-unit mono">CUPS — NO REGRETS</span>
+          </div>
+          <div class="stat reveal">
+            <span class="stat-label mono">BASED IN</span>
+            <span class="stat-value stat-value-sm">SF, CA</span>
+            <span class="stat-unit mono">37.7749° N, 122.4194° W</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="stack reveal">
+        <span class="stack-label mono">STACK /</span>
+        <ul class="stack-tags">
+          <li>Swift</li><li>SwiftUI</li><li>Go</li><li>Scala</li><li>Python</li>
+          <li>React</li><li>React Native</li><li>GraphQL</li><li>Node.js</li>
+          <li>Firebase</li><li>TypeScript</li><li>HTML/CSS</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ─── WORK ─────────────────────────────────────────────── -->
+    <section class="work section" id="work">
+      <div class="section-head reveal">
+        <span class="section-num mono">02</span>
+        <h2 class="section-title">SELECTED WORK</h2>
+        <a class="section-cta mono" href="https://github.com/samuelbechar" target="_blank" rel="noopener">GITHUB ↗</a>
+      </div>
+
+      <!-- Floating preview that follows the cursor -->
+      <div class="work-preview" id="workPreview" aria-hidden="true">
+        <img src="images/projects/stir.jpeg" alt="" id="workPreviewImg" />
+      </div>
+
+      <ul class="work-list" id="workList">
+        <li class="work-row reveal" data-img="images/projects/stir.jpeg">
+          <a href="https://samuelbechar.notion.site/Stir-98309cbf927f43189c0e4e8a4bd2d176" target="_blank" rel="noopener">
+            <span class="work-index mono">001</span>
+            <h3 class="work-name">STIR</h3>
+            <span class="work-cat mono">BUSINESS — COFFEE SUPPLEMENT BRAND</span>
+            <span class="work-arrow" aria-hidden="true">→</span>
+          </a>
+          <p class="work-desc">Founded a premium coffee-supplement e-commerce brand — adaptogens formulated for focus and energy. Product, sourcing, branding, and store ops, end to end.</p>
+        </li>
+
+        <li class="work-row reveal" data-img="images/projects/blitz.jpeg">
+          <a href="https://samuelbechar.notion.site/Blitz-47841c12d67b489eb53b9888e5a9334a?pvs=4" target="_blank" rel="noopener">
+            <span class="work-index mono">002</span>
+            <h3 class="work-name">BLITZ</h3>
+            <span class="work-cat mono">iOS — SWIFT</span>
+            <span class="work-arrow" aria-hidden="true">→</span>
+          </a>
+          <p class="work-desc">iOS app for indecisive friends and couples — set parameters, swipe through plans Tinder-style until everyone matches.</p>
+        </li>
+
+        <li class="work-row reveal" data-img="images/projects/avitracker.jpg">
+          <a href="https://www.avicenna-medical.com/" target="_blank" rel="noopener">
+            <span class="work-index mono">003</span>
+            <h3 class="work-name">AVITRACKS</h3>
+            <span class="work-cat mono">iOS — HEALTHKIT</span>
+            <span class="work-arrow" aria-hidden="true">→</span>
+          </a>
+          <p class="work-desc">Remote patient monitoring app that aggregates Apple Health data and streams it to physicians through Avicenna's platform.</p>
+        </li>
+
+        <li class="work-row reveal" data-img="images/projects/arize.png">
+          <a href="https://samuelbechar.notion.site/Arize-Portfolio-5a988f77e66d4e66935bde76766b8892?pvs=4" target="_blank" rel="noopener">
+            <span class="work-index mono">004</span>
+            <h3 class="work-name">ARIZE</h3>
+            <span class="work-cat mono">iOS — NODE.JS — FIREBASE</span>
+            <span class="work-arrow" aria-hidden="true">→</span>
+          </a>
+          <p class="work-desc">Deep Instagram analytics for creators — stats, content editing, and post scheduling on a Node + Firebase + Graph API backend.</p>
+        </li>
+
+        <li class="work-row reveal" data-img="images/projects/luxPicnics.jpeg">
+          <a href="https://samuelbechar.notion.site/Lux-Picnics-Ann-Arbor-c6a19506fac44c54b7a98c0feae4fbaf" target="_blank" rel="noopener">
+            <span class="work-index mono">005</span>
+            <h3 class="work-name">LUX PICNICS</h3>
+            <span class="work-cat mono">BUSINESS — AS SEEN ON LOCAL 4</span>
+            <span class="work-arrow" aria-hidden="true">→</span>
+          </a>
+          <p class="work-desc">Co-founded a luxury pop-up picnic company serving Ann Arbor — curated setups for proposals, celebrations, and events.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ─── EXPERIENCE ───────────────────────────────────────── -->
+    <section class="exp section" id="experience">
+      <div class="section-head reveal">
+        <span class="section-num mono">03</span>
+        <h2 class="section-title">EXPERIENCE</h2>
+      </div>
+
+      <ol class="exp-list">
+        <li class="exp-row reveal">
+          <span class="exp-dates mono">2024 —</span>
+          <div class="exp-main">
+            <h3 class="exp-role">Software Engineer <span class="exp-at">@</span> <a href="https://www.rubrik.com" target="_blank" rel="noopener">Rubrik</a></h3>
+            <p class="exp-desc">Built Quorum Authorization for Rubrik Security Cloud — a configurable multi-approver security feature created for federal customers. Full-stack across Go, Scala, GraphQL, and React; presented to leadership and shipped to production.</p>
+            <div class="exp-tags mono"><span>GO</span><span>SCALA</span><span>GRAPHQL</span><span>REACT</span><span>PYTHON</span></div>
+          </div>
+        </li>
+
+        <li class="exp-row reveal">
+          <span class="exp-dates mono">2023</span>
+          <div class="exp-main">
+            <h3 class="exp-role">Mobile SWE Intern <span class="exp-at">@</span> <a href="https://www.ally.com" target="_blank" rel="noopener">Ally Financial</a></h3>
+            <p class="exp-desc">Built UI components for the Metronome design system across iOS (SwiftUI) and Android (React Native), and presented developer-onboarding research to executive leadership.</p>
+            <div class="exp-tags mono"><span>SWIFTUI</span><span>REACT NATIVE</span><span>GITLAB</span></div>
+          </div>
+        </li>
+
+        <li class="exp-row reveal">
+          <span class="exp-dates mono">2022</span>
+          <div class="exp-main">
+            <h3 class="exp-role">iOS Developer Intern <span class="exp-at">@</span> <a href="https://www.avicenna-medical.com/" target="_blank" rel="noopener">Avicenna Medical</a></h3>
+            <p class="exp-desc">Built a remote patient monitoring iOS app collecting Apple Watch and iPhone health data via HealthKit, with two-factor auth and patient permission flows for data privacy.</p>
+            <div class="exp-tags mono"><span>SWIFT</span><span>HEALTHKIT</span><span>REST</span></div>
+          </div>
+        </li>
+
+        <li class="exp-row reveal">
+          <span class="exp-dates mono">2021</span>
+          <div class="exp-main">
+            <h3 class="exp-role">Web Dev Intern <span class="exp-at">@</span> <a href="https://www.avicenna-medical.com/" target="_blank" rel="noopener">Avicenna Medical</a></h3>
+            <p class="exp-desc">Led the company website revamp to new design specs, working directly with the co-founder and head of marketing.</p>
+            <div class="exp-tags mono"><span>HTML</span><span>CSS</span><span>JAVASCRIPT</span></div>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ─── CONTACT ──────────────────────────────────────────── -->
+    <section class="contact section" id="contact">
+      <div class="section-head reveal">
+        <span class="section-num mono">04</span>
+        <h2 class="section-title">CONTACT</h2>
+      </div>
+
+      <p class="contact-kicker reveal">Have a question, a project, or just want to say hi?</p>
+
+      <a class="contact-mega reveal" href="mailto:samuel@samuelbechar.com" id="contactMega">
+        <span class="contact-mega-line">LET'S</span>
+        <span class="contact-mega-line contact-mega-accent">TALK<span class="contact-mega-arrow" aria-hidden="true">↗</span></span>
+      </a>
+
+      <div class="contact-links reveal">
+        <a class="contact-link" href="mailto:samuel@samuelbechar.com"><span class="mono">EMAIL</span>samuel@samuelbechar.com</a>
+        <a class="contact-link" href="https://github.com/samuelbechar" target="_blank" rel="noopener"><span class="mono">GITHUB</span>@samuelbechar</a>
+        <a class="contact-link" href="https://linkedin.com/in/samuelbechar" target="_blank" rel="noopener"><span class="mono">LINKEDIN</span>/in/samuelbechar</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <span class="mono">© <span id="year"></span> SAMUEL BECHAR</span>
+    <span class="mono footer-mid">DESIGNED &amp; BUILT IN SF — <span data-clock>00:00:00</span> PT</span>
+    <a class="mono footer-top" href="#top">BACK TO TOP ↑</a>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

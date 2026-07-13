@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Samuel Bechar — Software Engineer & Builder</title>
+<meta name="description" content="Samuel Bechar — Software Engineer at Rubrik. Building apps, web experiences, and businesses from the ground up." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f4f1ea;--paper:#faf8f3;--ink:#1a1814;--ink-soft:#5c574e;
+    --line:#e0dacd;--line-strong:#cfc8b8;--accent:#b5472d;--glow:rgba(181,71,45,.45);
+    --frame-shadow:0 18px 44px -22px rgba(40,30,15,.4);
+  }
+  [data-theme="dark"]{
+    --bg:#14110d;--paper:#1d1813;--ink:#efe6d6;--ink-soft:#a99a83;
+    --line:rgba(255,255,255,.10);--line-strong:rgba(255,255,255,.18);--accent:#c7984f;--glow:rgba(199,152,79,.5);
+    --frame-shadow:0 22px 50px -24px rgba(0,0,0,.7);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .4s,color .4s}
+  ::selection{background:var(--accent);color:var(--bg)}
+  a{color:inherit;text-decoration:none}
+  .serif{font-family:"Fraunces",serif}
+
+  .layout{display:grid;grid-template-columns:42vw 1fr;min-height:100vh}
+  @media(max-width:920px){.layout{display:block}}
+
+  /* SIDEBAR */
+  .side{position:sticky;top:0;height:100vh;padding:60px 5vw;display:flex;flex-direction:column;border-right:1px solid var(--line)}
+  @media(max-width:920px){.side{position:static;height:auto;min-height:auto;padding:48px 24px;border-right:0;border-bottom:1px solid var(--line)}}
+  .side .top{display:flex;justify-content:space-between;align-items:flex-start}
+  .badge{display:inline-flex;align-items:center;gap:9px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 var(--glow)}70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+  .side .mid{margin-top:auto;margin-bottom:auto;padding:50px 0}
+  .side h1{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(52px,6vw,92px);line-height:.92;letter-spacing:-.02em}
+  .side h1 .it{display:block;font-style:italic;font-weight:400}
+  .side .role{font-family:"Fraunces",serif;font-style:italic;font-size:20px;color:var(--accent);margin-top:18px}
+  .side .intro{margin-top:24px;color:var(--ink-soft);max-width:30ch;font-size:16px}
+  .side .intro em{color:var(--ink);font-style:normal;font-weight:500}
+  .jump{display:flex;flex-direction:column;gap:11px;margin-top:34px}
+  .jump a{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--ink-soft);width:max-content;transition:color .3s}
+  .jump a .ln{width:24px;height:1px;background:var(--line-strong);transition:width .3s,background .3s}
+  .jump a:hover,.jump a.active{color:var(--ink)}
+  .jump a:hover .ln,.jump a.active .ln{width:46px;background:var(--accent)}
+  .side .bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .socials{display:flex;gap:20px;font-size:13.5px}
+  .socials a{color:var(--ink-soft);transition:.25s;border-bottom:1px solid transparent;padding-bottom:2px}
+  .socials a:hover{color:var(--accent);border-color:var(--accent)}
+  .meta-time{font-size:13px;color:var(--ink-soft)}
+  .theme-toggle{width:38px;height:38px;border-radius:50%;border:1px solid var(--line-strong);background:transparent;color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:.25s;flex-shrink:0}
+  .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:rotate(15deg)}
+  .theme-toggle svg{width:17px;height:17px}.ic-sun{display:none}.ic-moon{display:block}
+  [data-theme="dark"] .ic-sun{display:block}[data-theme="dark"] .ic-moon{display:none}
+
+  /* CONTENT */
+  .content{padding:60px 6vw 80px}
+  @media(max-width:920px){.content{padding:20px 24px 70px}}
+  .block{padding:54px 0;border-bottom:1px solid var(--line)}
+  .block:first-child{padding-top:40px}
+  .block:last-child{border-bottom:0}
+  .sec-label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:34px;font-weight:600}
+  .lede{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(22px,2.6vw,30px);line-height:1.42}
+  .lede em{font-style:italic;color:var(--accent)}
+  .facts{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;margin-top:34px}
+  .facts .row{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+  .facts .row span:first-child{color:var(--ink-soft)}
+  @media(max-width:560px){.facts{grid-template-columns:1fr}}
+  .stack-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+  .stack-tags span{border:1px solid var(--line-strong);padding:6px 13px;border-radius:30px;font-size:13.5px;transition:.25s}
+  .stack-tags span:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* work rows */
+  .work-item{display:grid;grid-template-columns:120px 1fr auto;gap:26px;align-items:center;padding:24px 0;border-top:1px solid var(--line);transition:.35s}
+  .work-item:last-child{border-bottom:1px solid var(--line)}
+  .work-item .thumb{width:120px;aspect-ratio:4/3;border-radius:6px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--frame-shadow)}
+  .work-item .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+  .work-item:hover{padding-left:10px}
+  .work-item:hover .thumb img{transform:scale(1.07)}
+  .work-item h3{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(24px,3vw,34px);line-height:1;transition:color .3s}
+  .work-item:hover h3{color:var(--accent)}
+  .work-item .cat{font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft);margin-top:8px}
+  .work-item .desc{font-size:14px;color:var(--ink-soft);margin-top:8px;max-width:46ch}
+  .work-item .arr{font-size:20px;color:var(--ink-soft);transition:.3s}
+  .work-item:hover .arr{color:var(--accent);transform:translate(3px,-3px)}
+  @media(max-width:560px){.work-item{grid-template-columns:84px 1fr;gap:18px}.work-item .arr{display:none}.work-item .thumb{width:84px}}
+
+  .exp-item{padding:22px 0;border-top:1px solid var(--line)}
+  .exp-item:last-child{border-bottom:1px solid var(--line)}
+  .exp-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+  .exp-role{font-family:"Fraunces",serif;font-weight:400;font-size:21px}
+  .exp-role a{color:var(--accent)}
+  .exp-date{font-size:13px;color:var(--ink-soft)}
+  .exp-desc{color:var(--ink-soft);font-size:14.5px;margin-top:8px;max-width:64ch}
+
+  .contact-h{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(40px,6vw,76px);line-height:.95;letter-spacing:-.02em}
+  .contact-h a{transition:.35s}.contact-h a:hover{color:var(--accent);font-style:italic}
+  .contact-sub{color:var(--ink-soft);margin-top:18px;max-width:46ch}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="side">
+    <div class="top">
+      <span class="badge"><span class="dot"></span> Open to interesting problems</span>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+        <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+      </button>
+    </div>
+    <div class="mid">
+      <h1>Samuel<span class="it">Bechar</span></h1>
+      <div class="role">software engineer &amp; builder</div>
+      <p class="intro">I build <em>apps</em>, <em>web experiences</em>, and <em>businesses</em> from the ground up. Currently engineering at <em>Rubrik</em>.</p>
+      <nav class="jump" id="jump">
+        <a href="#about" data-id="about"><span class="ln"></span> About</a>
+        <a href="#work" data-id="work"><span class="ln"></span> Selected Work</a>
+        <a href="#experience" data-id="experience"><span class="ln"></span> Experience</a>
+        <a href="#contact" data-id="contact"><span class="ln"></span> Contact</a>
+      </nav>
+    </div>
+    <div class="bottom">
+      <div class="socials">
+        <a href="https://github.com/samuelbechar" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/samuelbechar" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:samuel@samuelbechar.com">Email</a>
+      </div>
+      <div class="meta-time">SF · <span id="clock">--:--</span></div>
+    </div>
+  </aside>
+
+  <main class="content">
+    <section class="block" id="about">
+      <div class="sec-label reveal">About</div>
+      <p class="lede reveal">I'm a <em>Michigan CS grad</em> turned engineer at <em>Rubrik</em>. I've shipped iOS apps used by real patients, security features built for federal customers, and co-founded businesses with nothing but an idea — and a brother who said <em>"why not."</em></p>
+      <div class="facts reveal">
+        <div class="row"><span>Role</span><span>Software Engineer</span></div>
+        <div class="row"><span>Company</span><span>Rubrik</span></div>
+        <div class="row"><span>Based in</span><span>San Francisco, CA</span></div>
+        <div class="row"><span>Education</span><span>U-M CS '25</span></div>
+      </div>
+      <div class="stack-tags reveal"><span>Swift</span><span>SwiftUI</span><span>Go</span><span>Scala</span><span>Python</span><span>React</span><span>React Native</span><span>GraphQL</span><span>Node.js</span><span>Firebase</span><span>TypeScript</span></div>
+    </section>
+
+    <section class="block" id="work">
+      <div class="sec-label reveal">Selected Work</div>
+      <a class="work-item reveal" href="https://samuelbechar.notion.site/Stir-98309cbf927f43189c0e4e8a4bd2d176" target="_blank" rel="noopener">
+        <span class="thumb"><img src="../images/projects/stir.jpeg" alt="Stir"></span>
+        <div><h3>Stir</h3><div class="cat">Business · Coffee brand</div><p class="desc">Premium adaptogen coffee supplements — product, sourcing, branding, and store ops, end to end.</p></div>
+        <span class="arr">↗</span>
+      </a>
+      <a class="work-item reveal" href="https://samuelbechar.notion.site/Blitz-47841c12d67b489eb53b9888e5a9334a" target="_blank" rel="noopener">
+        <span class="thumb"><img src="../images/projects/blitz.jpeg" alt="Blitz"></span>
+        <div><h3>Blitz</h3><div class="cat">iOS · Swift</div><p class="desc">An app for indecisive friends and couples — swipe through plans Tinder-style until everyone matches.</p></div>
+        <span class="arr">↗</span>
+      </a>
+      <a class="work-item reveal" href="https://www.avicenna-medical.com/" target="_blank" rel="noopener">
+        <span class="thumb"><img src="../images/projects/avitracker.jpg" alt="AviTracks"></span>
+        <div><h3>AviTracks</h3><div class="cat">iOS · HealthKit</div><p class="desc">Remote patient monitoring that streams Apple Health data to physicians through Avicenna's platform.</p></div>
+        <span class="arr">↗</span>
+      </a>
+      <a class="work-item reveal" href="https://samuelbechar.notion.site/Arize-Portfolio-5a988f77e66d4e66935bde76766b8892" target="_blank" rel="noopener">
+        <span class="thumb"><img src="../images/projects/arize.png" alt="Arize"></span>
+        <div><h3>Arize</h3><div class="cat">iOS · Node · Firebase</div><p class="desc">Deep Instagram analytics for creators — stats, content editing, and post scheduling.</p></div>
+        <span class="arr">↗</span>
+      </a>
+      <a class="work-item reveal" href="https://samuelbechar.notion.site/Lux-Picnics-Ann-Arbor-c6a19506fac44c54b7a98c0feae4fbaf" target="_blank" rel="noopener">
+        <span class="thumb"><img src="../images/projects/luxPicnics.jpeg" alt="Lux Picnics"></span>
+        <div><h3>Lux Picnics</h3><div class="cat">Business · On Local 4</div><p class="desc">Co-founded a luxury pop-up picnic company in Ann Arbor — curated setups for proposals and events.</p></div>
+        <span class="arr">↗</span>
+      </a>
+    </section>
+
+    <section class="block" id="experience">
+      <div class="sec-label reveal">Experience</div>
+      <div class="exp-item reveal"><div class="exp-head"><div class="exp-role">Software Engineer <a href="https://www.rubrik.com" target="_blank" rel="noopener">@ Rubrik</a></div><div class="exp-date">2024 —</div></div><p class="exp-desc">Built Quorum Authorization for Rubrik Security Cloud — a configurable multi-approver security feature for federal customers. Full-stack across Go, Scala, GraphQL, and React; presented to leadership and shipped to production.</p></div>
+      <div class="exp-item reveal"><div class="exp-head"><div class="exp-role">Mobile SWE Intern <a href="https://www.ally.com" target="_blank" rel="noopener">@ Ally Financial</a></div><div class="exp-date">2023</div></div><p class="exp-desc">Built UI components for the Metronome design system across iOS (SwiftUI) and Android (React Native), and presented developer-onboarding research to executive leadership.</p></div>
+      <div class="exp-item reveal"><div class="exp-head"><div class="exp-role">iOS Developer Intern <a href="https://www.avicenna-medical.com/" target="_blank" rel="noopener">@ Avicenna Medical</a></div><div class="exp-date">2022</div></div><p class="exp-desc">Built a remote patient monitoring iOS app collecting Apple Watch and iPhone health data via HealthKit, with two-factor auth and patient permission flows.</p></div>
+      <div class="exp-item reveal"><div class="exp-head"><div class="exp-role">Web Dev Intern <a href="https://www.avicenna-medical.com/" target="_blank" rel="noopener">@ Avicenna Medical</a></div><div class="exp-date">2021</div></div><p class="exp-desc">Led the company website revamp to new design specs, working directly with the co-founder and head of marketing.</p></div>
+    </section>
+
+    <section class="block" id="contact">
+      <div class="sec-label reveal">Contact</div>
+      <h2 class="contact-h reveal"><a href="mailto:samuel@samuelbechar.com">Let's talk.</a></h2>
+      <p class="contact-sub reveal">Have a question, a project, or just want to say hi? <a href="mailto:samuel@samuelbechar.com" style="color:var(--accent);border-bottom:1px solid var(--accent)">samuel@samuelbechar.com</a></p>
+    </section>
+  </main>
+</div>
+
+<script>
+  const root=document.documentElement;
+  const saved=localStorage.getItem('theme'); if(saved)root.dataset.theme=saved;
+  document.getElementById('themeToggle').addEventListener('click',()=>{const n=root.dataset.theme==='dark'?'light':'dark';root.dataset.theme=n;localStorage.setItem('theme',n)});
+
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // scrollspy for sidebar jump links
+  const links=[...document.querySelectorAll('.jump a')];
+  const secs=['about','work','experience','contact'].map(id=>document.getElementById(id));
+  const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(l=>l.classList.toggle('active',l.dataset.id===e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(s=>s&&spy.observe(s));
+
+  function tick(){const f=new Intl.DateTimeFormat('en-US',{timeZone:'America/Los_Angeles',hour:'2-digit',minute:'2-digit',hour12:true});document.getElementById('clock').textContent=f.format(new Date())}
+  tick();setInterval(tick,1000);
+</script>
+</body>
+</html>

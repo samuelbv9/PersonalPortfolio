@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Samuel Bechar — Software Engineer & Builder</title>
+<meta name="description" content="Samuel Bechar — Software Engineer at Rubrik. Building apps, web experiences, and businesses from the ground up." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0a0c;
+    --card:#141417;
+    --card2:#1a1a1f;
+    --ink:#f5f5f4;
+    --ink-soft:#9b9ba3;
+    --line:rgba(255,255,255,.07);
+    --accent:#ff6b3d;     /* warm orange */
+    --green:#37d67a;
+    --radius:22px;
+    --maxw:1080px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.55;padding:0 0 60px}
+  ::selection{background:var(--accent);color:#000}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* top bar */
+  .bar{display:flex;align-items:center;justify-content:space-between;padding:28px 0 18px;font-size:14.5px}
+  .bar .logo{font-weight:700;font-size:17px}
+  .bar .logo b{color:var(--accent)}
+  .bar nav{display:flex;gap:8px}
+  .bar nav a{padding:7px 14px;border-radius:30px;color:var(--ink-soft);transition:.25s}
+  .bar nav a:hover{color:var(--ink);background:var(--card)}
+  @media(max-width:640px){.bar nav a.opt{display:none}}
+
+  /* bento grid */
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;grid-auto-rows:minmax(150px,auto)}
+  @media(max-width:860px){.bento{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.bento{grid-template-columns:1fr}}
+  .tile{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;position:relative;overflow:hidden;
+    transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,background .35s;
+    opacity:0;transform:translateY(20px)}
+  .tile.in{opacity:1;transform:none}
+  .tile:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.16)}
+  a.tile:hover{background:var(--card2)}
+  .label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);display:flex;align-items:center;gap:8px}
+
+  /* spans */
+  .col2{grid-column:span 2}.col3{grid-column:span 3}.col4{grid-column:span 4}
+  .row2{grid-row:span 2}
+  @media(max-width:860px){.col3,.col4{grid-column:span 2}.bento .col2.sm{grid-column:span 2}}
+  @media(max-width:520px){.col2,.col3,.col4{grid-column:span 1}}
+
+  /* hero tile */
+  .hero-tile{display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(140deg,#1c1c22,#121216)}
+  .hero-tile h1{font-size:clamp(38px,6vw,68px);font-weight:800;letter-spacing:-.035em;line-height:.98;margin:18px 0 12px}
+  .hero-tile h1 span{color:var(--accent)}
+  .hero-tile p{color:var(--ink-soft);max-width:440px;font-size:16px}
+  .hero-foot{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+  .chip{font-size:13px;padding:7px 13px;border-radius:30px;background:rgba(255,255,255,.05);border:1px solid var(--line);display:flex;align-items:center;gap:7px}
+  .chip img{width:16px;height:16px;border-radius:4px;object-fit:cover}
+
+  /* now tile */
+  .now .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:bl 2s infinite}
+  @keyframes bl{50%{opacity:.4}}
+  .now .role{font-size:22px;font-weight:700;margin-top:14px}
+  .now .at{color:var(--accent)}
+  .now small{color:var(--ink-soft);font-size:13.5px}
+
+  /* clock tile */
+  .clock{display:flex;flex-direction:column;justify-content:space-between}
+  .clock .time{font-size:34px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .clock .loc{color:var(--ink-soft);font-size:14px}
+
+  /* stack tile */
+  .stack-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+  .stack-tags span{font-size:12.5px;padding:6px 11px;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid var(--line);transition:.25s}
+  .stack-tags span:hover{color:var(--accent);border-color:var(--accent)}
+
+  /* map tile */
+  .map-tile{padding:0;background:#101014}
+  .map-tile .inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    background:
+      radial-gradient(circle at 50% 50%,rgba(255,107,61,.18),transparent 60%),
+      repeating-linear-gradient(0deg,var(--line) 0 1px,transparent 1px 26px),
+      repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 26px),#0d0d11}
+  .pin{width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(255,107,61,.5);animation:ping 2.2s infinite;position:relative;z-index:2}
+  @keyframes ping{0%{box-shadow:0 0 0 0 rgba(255,107,61,.5)}70%{box-shadow:0 0 0 22px rgba(255,107,61,0)}100%{box-shadow:0 0 0 0 rgba(255,107,61,0)}}
+  .map-tile .tag{position:absolute;left:16px;bottom:14px;z-index:2;font-size:13px;color:var(--ink-soft)}
+
+  /* section heads as full row */
+  .head{grid-column:1/-1;display:flex;align-items:baseline;justify-content:space-between;margin:22px 4px 2px}
+  .head h2{font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+  .head a{font-size:13px;color:var(--accent)}
+
+  /* work tile */
+  .work-tile{display:flex;flex-direction:column;justify-content:space-between}
+  .work-tile .top{display:flex;justify-content:space-between;align-items:flex-start}
+  .work-tile img{width:44px;height:44px;border-radius:11px;object-fit:cover;border:1px solid var(--line)}
+  .work-tile .arr{color:var(--ink-soft);transition:.3s}
+  .work-tile:hover .arr{color:var(--accent);transform:translate(3px,-3px)}
+  .work-tile h3{font-size:21px;font-weight:700;margin-top:18px}
+  .work-tile .cat{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-top:4px}
+  .work-tile p{font-size:13.5px;color:var(--ink-soft);margin-top:10px}
+
+  /* experience tile */
+  .exp-tile{display:flex;flex-direction:column;gap:18px}
+  .exp-item{display:flex;gap:16px;align-items:baseline}
+  .exp-item .yr{font-size:13px;color:var(--ink-soft);width:62px;flex-shrink:0;font-variant-numeric:tabular-nums}
+  .exp-item .r{font-size:15.5px}
+  .exp-item .r b{font-weight:600}
+  .exp-item .r .co{color:var(--accent)}
+
+  /* contact tile */
+  .contact-tile{background:linear-gradient(140deg,var(--accent),#c23a16);color:#1a0f08;display:flex;flex-direction:column;justify-content:space-between}
+  .contact-tile h2{font-size:clamp(30px,5vw,52px);font-weight:800;letter-spacing:-.03em;line-height:.95}
+  .contact-tile .links{display:flex;gap:18px;flex-wrap:wrap;font-size:14.5px;font-weight:500}
+  .contact-tile .links a{border-bottom:1.5px solid rgba(26,15,8,.4);padding-bottom:1px}
+
+  footer{text-align:center;color:var(--ink-soft);font-size:13px;margin-top:36px}
+</style>
+</head>
+<body>
+
+<div class="wrap" id="top">
+  <div class="bar">
+    <a class="logo" href="#top">Samuel Bechar<b>.</b></a>
+    <nav>
+      <a class="opt" href="#work">Work</a>
+      <a class="opt" href="#exp">Experience</a>
+      <a href="mailto:samuel@samuelbechar.com">Contact</a>
+    </nav>
+  </div>
+
+  <div class="bento">
+
+    <!-- hero -->
+    <div class="tile hero-tile col3 row2">
+      <span class="label"><span class="dot" style="background:var(--accent);box-shadow:0 0 10px var(--accent)"></span> Software Engineer &amp; Builder</span>
+      <div>
+        <h1>Samuel<br>Bechar<span>.</span></h1>
+        <p>I build apps, web experiences, and businesses from the ground up. Currently engineering at Rubrik.</p>
+      </div>
+      <div class="hero-foot">
+        <span class="chip"><img src="../images/logos/rubrik.jpeg" alt="">SWE @ Rubrik</span>
+        <span class="chip">🎓 UMich CS '25</span>
+        <span class="chip">iOS · Full-stack</span>
+      </div>
+    </div>
+
+    <!-- now -->
+    <div class="tile now">
+      <span class="label"><span class="dot"></span> Now</span>
+      <div class="role">Building<br><span class="at">@ Rubrik</span></div>
+      <small>Security Cloud · full-stack</small>
+    </div>
+
+    <!-- clock -->
+    <div class="tile clock">
+      <span class="label">Local time</span>
+      <div>
+        <div class="time" id="clock">--:--</div>
+        <div class="loc">San Francisco, CA</div>
+      </div>
+    </div>
+
+    <!-- map -->
+    <div class="tile map-tile">
+      <div class="inner"><span class="pin"></span></div>
+      <span class="tag">37.77° N, 122.42° W</span>
+    </div>
+
+    <!-- stack -->
+    <div class="tile col2">
+      <span class="label">Stack</span>
+      <div class="stack-tags">
+        <span>Swift</span><span>SwiftUI</span><span>Go</span><span>Scala</span><span>Python</span><span>React</span><span>React Native</span><span>GraphQL</span><span>Node.js</span><span>Firebase</span><span>TypeScript</span>
+      </div>
+    </div>
+
+    <!-- WORK -->
+    <div class="head" id="work"><h2>Selected Work</h2><a href="https://github.com/samuelbechar" target="_blank" rel="noopener">GitHub ↗</a></div>
+
+    <a class="tile work-tile col2" href="https://samuelbechar.notion.site/Stir-98309cbf927f43189c0e4e8a4bd2d176" target="_blank" rel="noopener">
+      <div class="top"><img src="../images/projects/stir.jpeg" alt=""><span class="arr">↗</span></div>
+      <div><h3>Stir</h3><div class="cat">Business — Coffee supplement brand</div><p>Premium adaptogen coffee supplements — product, sourcing, branding, and store ops, end to end.</p></div>
+    </a>
+    <a class="tile work-tile" href="https://samuelbechar.notion.site/Blitz-47841c12d67b489eb53b9888e5a9334a" target="_blank" rel="noopener">
+      <div class="top"><img src="../images/projects/blitz.jpeg" alt=""><span class="arr">↗</span></div>
+      <div><h3>Blitz</h3><div class="cat">iOS — Swift</div></div>
+    </a>
+    <a class="tile work-tile" href="https://www.avicenna-medical.com/" target="_blank" rel="noopener">
+      <div class="top"><img src="../images/projects/avitracker.jpg" alt=""><span class="arr">↗</span></div>
+      <div><h3>AviTracks</h3><div class="cat">iOS — HealthKit</div></div>
+    </a>
+    <a class="tile work-tile" href="https://samuelbechar.notion.site/Arize-Portfolio-5a988f77e66d4e66935bde76766b8892" target="_blank" rel="noopener">
+      <div class="top"><img src="../images/projects/arize.png" alt=""><span class="arr">↗</span></div>
+      <div><h3>Arize</h3><div class="cat">iOS — Node · Firebase</div></div>
+    </a>
+    <a class="tile work-tile" href="https://samuelbechar.notion.site/Lux-Picnics-Ann-Arbor-c6a19506fac44c54b7a98c0feae4fbaf" target="_blank" rel="noopener">
+      <div class="top"><img src="../images/projects/luxPicnics.jpeg" alt=""><span class="arr">↗</span></div>
+      <div><h3>Lux Picnics</h3><div class="cat">Business — On Local 4</div></div>
+    </a>
+
+    <!-- EXPERIENCE -->
+    <div class="head" id="exp"><h2>Experience</h2></div>
+    <div class="tile exp-tile col4">
+      <div class="exp-item"><span class="yr">2024 —</span><span class="r"><b>Software Engineer</b> <span class="co">@ Rubrik</span> — Built Quorum Authorization for Rubrik Security Cloud, a multi-approver security feature for federal customers. Full-stack across Go, Scala, GraphQL, React.</span></div>
+      <div class="exp-item"><span class="yr">2023</span><span class="r"><b>Mobile SWE Intern</b> <span class="co">@ Ally Financial</span> — Built UI components for the Metronome design system across iOS (SwiftUI) and Android (React Native).</span></div>
+      <div class="exp-item"><span class="yr">2022</span><span class="r"><b>iOS Developer Intern</b> <span class="co">@ Avicenna Medical</span> — Remote patient monitoring iOS app via HealthKit with 2FA and patient permission flows.</span></div>
+      <div class="exp-item"><span class="yr">2021</span><span class="r"><b>Web Dev Intern</b> <span class="co">@ Avicenna Medical</span> — Led the company website revamp to new design specs.</span></div>
+    </div>
+
+    <!-- CONTACT -->
+    <a class="tile contact-tile col4" href="mailto:samuel@samuelbechar.com">
+      <span class="label" style="color:rgba(26,15,8,.6)">Contact</span>
+      <h2>Have an idea?<br>Let's talk.</h2>
+      <div class="links">
+        <a href="mailto:samuel@samuelbechar.com">samuel@samuelbechar.com</a>
+        <a href="https://github.com/samuelbechar" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/samuelbechar" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </a>
+
+  </div>
+
+  <footer>© 2026 Samuel Bechar — designed &amp; built in San Francisco</footer>
+</div>
+
+<script>
+  // staggered reveal
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const t=e.target;setTimeout(()=>t.classList.add('in'),(+t.dataset.d||0));io.unobserve(t)}}),{threshold:.1});
+  document.querySelectorAll('.tile').forEach((t,i)=>{t.dataset.d=(i%6)*60;io.observe(t)});
+  // live clock (SF / PT)
+  function tick(){
+    const f=new Intl.DateTimeFormat('en-US',{timeZone:'America/Los_Angeles',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true});
+    document.getElementById('clock').textContent=f.format(new Date());
+  }
+  tick();setInterval(tick,1000);
+</script>
+</body>
+</html>

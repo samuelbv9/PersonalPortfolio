@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quiet Luxury — pick a structure</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{--bg:#f4f1ea;--paper:#faf8f3;--ink:#1a1814;--soft:#5c574e;--line:#e0dacd;--accent:#b5472d}
+  [data-theme="dark"]{--bg:#14110d;--paper:#1d1813;--ink:#efe6d6;--soft:#a99a83;--line:rgba(255,255,255,.12);--accent:#c7984f}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;padding:54px 24px;transition:.4s}
+  .wrap{max-width:1020px;margin:0 auto}
+  .serif{font-family:"Fraunces",serif}
+  .topbar{display:flex;justify-content:space-between;align-items:flex-start}
+  .kick{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  h1{font-family:"Fraunces",serif;font-weight:300;font-size:40px;letter-spacing:-.02em}
+  p.sub{color:var(--soft);margin-top:12px;max-width:640px;line-height:1.6}
+  .tt{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;font-size:15px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+  @media(max-width:780px){.grid{grid-template-columns:1fr}}
+  a.card{display:block;border:1px solid var(--line);border-radius:16px;overflow:hidden;color:inherit;text-decoration:none;background:var(--paper);transition:.3s}
+  a.card:hover{transform:translateY(-4px);border-color:var(--accent)}
+  .demo{height:150px;border-bottom:1px solid var(--line);padding:14px;position:relative;overflow:hidden}
+  .meta{padding:20px 22px}
+  .meta .t{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+  .meta h2{font-family:"Fraunces",serif;font-weight:400;font-size:23px;margin:5px 0 7px}
+  .meta .d{color:var(--soft);font-size:14px;line-height:1.55}
+  .meta .go{margin-top:14px;font-size:13.5px;color:var(--accent)}
+  /* tiny wireframes */
+  .wf{position:absolute;inset:14px;display:flex;gap:8px}
+  .b{background:var(--line);border-radius:3px}
+  /* editorial: left text + right block */
+  .wf-ed{flex-direction:column;gap:7px}
+  .wf-ed .ln{height:9px;border-radius:3px;background:var(--line)}
+  .wf-ed .ln.lg{height:22px;width:70%;background:var(--accent);opacity:.5}
+  .wf-ed .ln.md{width:50%}.wf-ed .ln.sm{width:35%}
+  .wf-ed .rowx{display:flex;gap:8px;margin-top:6px}
+  .wf-ed .rowx .col{flex:1;display:flex;flex-direction:column;gap:6px}
+  .wf-ed .rowx .img{flex:1;background:var(--line);border-radius:4px}
+  /* split: sidebar + content */
+  .wf-sp{gap:8px}
+  .wf-sp .side{width:40%;background:var(--line);border-radius:4px;opacity:.7}
+  .wf-sp .main{flex:1;display:flex;flex-direction:column;gap:7px}
+  .wf-sp .main .ln{height:9px;background:var(--line);border-radius:3px}
+  .wf-sp .main .ln.a{width:60%;background:var(--accent);opacity:.5}
+  /* index: centered */
+  .wf-ix{flex-direction:column;align-items:center;gap:8px;justify-content:center}
+  .wf-ix .ln{height:8px;background:var(--line);border-radius:3px}
+  .wf-ix .ttl{height:18px;width:55%;background:var(--accent);opacity:.5;border-radius:3px}
+  .wf-ix .sm{width:38%}
+  .wf-ix .gal{display:flex;gap:7px;width:80%;margin-top:4px}
+  .wf-ix .gal .img{flex:1;height:30px;background:var(--line);border-radius:3px}
+  .note{margin-top:26px;color:var(--soft);font-size:13.5px}
+  .note b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div><span class="kick">Quiet Luxury · three structures</span><h1>Pick a structure.</h1></div>
+    <button class="tt" id="tt" aria-label="Toggle theme">◐</button>
+  </div>
+  <p class="sub">Same elegant Quiet Luxury aesthetic — but three genuinely different <b>layout structures</b>. Every page has the warm↔espresso light/dark toggle (top-right ☾, defaults to warm). Click around, flip the theme on each, and tell me the winner.</p>
+
+  <div class="grid">
+    <a class="card" href="v1-editorial.html">
+      <div class="demo"><div class="wf wf-ed"><div class="ln lg"></div><div class="ln md"></div><div class="ln sm"></div><div class="rowx"><div class="col"><div class="ln" style="height:9px"></div><div class="ln" style="height:9px;width:70%"></div><div class="ln" style="height:9px;width:80%"></div></div><div class="img"></div></div></div></div>
+      <div class="meta"><div class="t">01 · classic</div><h2>Editorial</h2><div class="d">Big left-aligned hero, then a work section where a sticky image crossfades beside the project list. The clean, safe one.</div><div class="go">Open ↗</div></div>
+    </a>
+    <a class="card" href="v4-spread.html">
+      <div class="demo"><div class="wf wf-ed"><div class="ln lg" style="width:90%;height:26px;margin:0 auto"></div><div class="rowx"><div class="col"><div class="ln" style="height:8px"></div><div class="ln" style="height:8px;width:85%"></div><div class="ln" style="height:8px;width:90%"></div></div><div class="col" style="flex:.5"><div class="ln" style="height:8px"></div><div class="ln" style="height:8px;width:70%"></div></div></div><div class="rowx"><div class="img" style="flex:.6"></div><div class="col"><div class="ln" style="height:14px;width:60%;background:var(--accent);opacity:.5"></div><div class="ln" style="height:8px"></div></div></div></div></div>
+      <div class="meta"><div class="t">02 · designed</div><h2>Spread</h2><div class="d">A real editorial magazine: masthead cover, 12-col asymmetric grid, drop-cap, marginalia, folios, alternating numbered features. Looks art-directed, not templated.</div><div class="go">Open ↗</div></div>
+    </a>
+    <a class="card" href="v5-exhibition.html">
+      <div class="demo"><div class="wf" style="align-items:center;gap:7px"><div class="img" style="flex:0 0 30%;height:80px;background:var(--accent);opacity:.45;border-radius:4px"></div><div class="img" style="flex:0 0 30%;height:80px;background:var(--line);border-radius:4px"></div><div class="img" style="flex:0 0 30%;height:80px;background:var(--line);border-radius:4px"></div><div style="position:absolute;bottom:14px;left:14px;right:14px;height:2px;background:var(--line)"><div style="width:35%;height:2px;background:var(--accent)"></div></div></div></div>
+      <div class="meta"><div class="t">03 · sideways</div><h2>Exhibition</h2><div class="d">The whole site scrolls <em>horizontally</em> like walking a gallery — each project is its own full-screen panel, with a progress bar &amp; giant page numbers. Falls back to vertical on mobile.</div><div class="go">Open ↗</div></div>
+    </a>
+  </div>
+
+  <p class="note"><b>Next:</b> once you lock a structure, I'll make it the real <b>index.html</b>, wire up résumé + SEO/OG + favicon + mobile menu, and clean out the old files.</p>
+
+  <p class="note" style="margin-top:18px">Older explorations:
+    <a href="c2-bento.html" style="color:var(--soft)">Bento</a> ·
+    <a href="b-spotlight.html" style="color:var(--soft)">Spotlight</a> ·
+    <a href="d-kinetic.html" style="color:var(--soft)">Kinetic</a>
+  </p>
+</div>
+<script>
+  const r=document.documentElement;const s=localStorage.getItem('theme');if(s)r.dataset.theme=s;
+  document.getElementById('tt').onclick=()=>{const n=r.dataset.theme==='dark'?'light':'dark';r.dataset.theme=n;localStorage.setItem('theme',n)};
+</script>
+</body>
+</html>

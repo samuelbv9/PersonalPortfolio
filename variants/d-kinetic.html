@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Samuel Bechar — Software Engineer & Builder</title>
+<meta name="description" content="Samuel Bechar — Software Engineer at Rubrik. Building apps, web experiences, and businesses from the ground up." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0b0b0b;
+    --ink:#f2f2ee;
+    --ink-soft:#777;
+    --accent:#d6ff3f;   /* acid lime punch */
+    --line:rgba(255,255,255,.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:"Space Grotesk",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden}
+  ::selection{background:var(--accent);color:#000}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:"JetBrains Mono",monospace}
+
+  /* scroll container w/ snap */
+  .scroller{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+  .scroller::-webkit-scrollbar{width:0}
+  .chapter{min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;
+    padding:80px 7vw;position:relative}
+
+  /* fixed HUD */
+  .hud{position:fixed;z-index:30;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);mix-blend-mode:difference}
+  .hud.tl{top:28px;left:7vw}
+  .hud.tr{top:28px;right:7vw;text-align:right}
+  .hud.bl{bottom:28px;left:7vw}
+  .hud.tl b{color:var(--ink)}
+  /* progress dots */
+  .dots{position:fixed;right:7vw;top:50%;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:14px}
+  .dots a{width:9px;height:9px;border-radius:50%;border:1px solid var(--ink-soft);transition:.3s}
+  .dots a.on{background:var(--accent);border-color:var(--accent);transform:scale(1.3)}
+  @media(max-width:640px){.dots{display:none}}
+
+  /* CH1 hero */
+  .kicker{font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:30px}
+  h1{font-size:clamp(54px,15vw,220px);font-weight:700;line-height:.84;letter-spacing:-.03em}
+  h1 .out{-webkit-text-stroke:2px var(--ink);color:transparent}
+  .hero-sub{margin-top:40px;font-size:clamp(16px,2vw,22px);color:var(--ink-soft);max-width:540px}
+  .hero-sub b{color:var(--ink);font-weight:500}
+
+  /* CH2 statement */
+  .statement{font-size:clamp(34px,7vw,96px);font-weight:600;line-height:1.04;letter-spacing:-.02em;max-width:14ch}
+  .statement em{font-style:normal;color:var(--accent)}
+  .reveal-word{display:inline-block;opacity:.12;transition:opacity .5s,transform .5s}
+  .chapter.active .reveal-word{opacity:1}
+
+  /* CH3 work */
+  .ch-label{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:40px}
+  .work-list{display:flex;flex-direction:column}
+  .work-item{display:flex;align-items:center;gap:24px;padding:22px 0;border-top:1px solid var(--line);position:relative;transition:.4s}
+  .work-item:last-child{border-bottom:1px solid var(--line)}
+  .work-item .num{font-size:13px;color:var(--ink-soft);width:34px}
+  .work-item .nm{font-size:clamp(28px,5vw,60px);font-weight:600;letter-spacing:-.02em;line-height:1;transition:.35s}
+  .work-item .ct{margin-left:auto;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);transition:.35s}
+  .work-item:hover{padding-left:24px}
+  .work-item:hover .nm{color:var(--accent)}
+  .work-item:hover .ct{color:var(--ink)}
+
+  /* CH4 experience */
+  .exp-list{display:flex;flex-direction:column;gap:26px;max-width:760px}
+  .exp-item{display:grid;grid-template-columns:90px 1fr;gap:24px;align-items:baseline}
+  .exp-item .yr{font-size:14px;color:var(--accent)}
+  .exp-item h3{font-size:clamp(20px,3vw,30px);font-weight:600;letter-spacing:-.01em}
+  .exp-item p{color:var(--ink-soft);font-size:15px;margin-top:6px;max-width:560px}
+  @media(max-width:640px){.exp-item{grid-template-columns:1fr;gap:4px}}
+
+  /* CH5 contact */
+  .contact{justify-content:center}
+  .contact .big{font-size:clamp(48px,13vw,180px);font-weight:700;line-height:.85;letter-spacing:-.03em}
+  .contact .big a{display:inline-block;transition:.3s}
+  .contact .big a:hover{color:var(--accent);transform:skewX(-6deg)}
+  .contact .links{display:flex;gap:30px;margin-top:50px;flex-wrap:wrap;font-size:15px}
+  .contact .links a{color:var(--ink-soft);transition:.25s;border-bottom:1px solid transparent;padding-bottom:2px}
+  .contact .links a:hover{color:var(--accent);border-color:var(--accent)}
+
+  .scroll-cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);display:flex;flex-direction:column;align-items:center;gap:8px}
+  .scroll-cue .ln{width:1px;height:30px;background:linear-gradient(var(--accent),transparent);animation:drop 1.8s infinite}
+  @keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+</style>
+</head>
+<body>
+
+<div class="hud tl"><b>Samuel Bechar</b> — SWE @ Rubrik</div>
+<div class="hud tr mono">San Francisco<br>CA</div>
+<div class="hud bl mono" id="idx">01 / 05</div>
+
+<div class="dots" id="dots">
+  <a href="#c1" class="on" data-i="0"></a>
+  <a href="#c2" data-i="1"></a>
+  <a href="#c3" data-i="2"></a>
+  <a href="#c4" data-i="3"></a>
+  <a href="#c5" data-i="4"></a>
+</div>
+
+<div class="scroller" id="scroller">
+
+  <!-- CH 1 -->
+  <section class="chapter" id="c1">
+    <div class="kicker">Software Engineer · Builder · Founder</div>
+    <h1>I&nbsp;BUILD<br><span class="out">THINGS</span><br>THAT&nbsp;SHIP.</h1>
+    <p class="hero-sub">Samuel Bechar — engineer at <b>Rubrik</b>, building <b>apps</b>, <b>web experiences</b>, and <b>businesses</b> from the ground up.</p>
+    <div class="scroll-cue">Scroll<div class="ln"></div></div>
+  </section>
+
+  <!-- CH 2 -->
+  <section class="chapter" id="c2">
+    <p class="statement">A <em>Michigan CS grad</em> shipping iOS apps for real patients, <em>security</em> for federal customers, and <em>businesses</em> from nothing but an idea.</p>
+  </section>
+
+  <!-- CH 3 -->
+  <section class="chapter" id="c3">
+    <div class="ch-label">Selected Work — 03</div>
+    <div class="work-list">
+      <a class="work-item" href="https://samuelbechar.notion.site/Stir-98309cbf927f43189c0e4e8a4bd2d176" target="_blank" rel="noopener"><span class="num mono">01</span><span class="nm">Stir</span><span class="ct">Coffee brand</span></a>
+      <a class="work-item" href="https://samuelbechar.notion.site/Blitz-47841c12d67b489eb53b9888e5a9334a" target="_blank" rel="noopener"><span class="num mono">02</span><span class="nm">Blitz</span><span class="ct">iOS · Swift</span></a>
+      <a class="work-item" href="https://www.avicenna-medical.com/" target="_blank" rel="noopener"><span class="num mono">03</span><span class="nm">AviTracks</span><span class="ct">iOS · HealthKit</span></a>
+      <a class="work-item" href="https://samuelbechar.notion.site/Arize-Portfolio-5a988f77e66d4e66935bde76766b8892" target="_blank" rel="noopener"><span class="num mono">04</span><span class="nm">Arize</span><span class="ct">iOS · Node · Firebase</span></a>
+      <a class="work-item" href="https://samuelbechar.notion.site/Lux-Picnics-Ann-Arbor-c6a19506fac44c54b7a98c0feae4fbaf" target="_blank" rel="noopener"><span class="num mono">05</span><span class="nm">Lux Picnics</span><span class="ct">Business</span></a>
+    </div>
+  </section>
+
+  <!-- CH 4 -->
+  <section class="chapter" id="c4">
+    <div class="ch-label">Experience — 04</div>
+    <div class="exp-list">
+      <div class="exp-item"><span class="yr mono">2024 —</span><div><h3>Software Engineer @ Rubrik</h3><p>Built Quorum Authorization for Rubrik Security Cloud — a multi-approver security feature for federal customers. Go · Scala · GraphQL · React.</p></div></div>
+      <div class="exp-item"><span class="yr mono">2023</span><div><h3>Mobile SWE Intern @ Ally Financial</h3><p>UI components for the Metronome design system across iOS (SwiftUI) and Android (React Native).</p></div></div>
+      <div class="exp-item"><span class="yr mono">2022</span><div><h3>iOS Developer Intern @ Avicenna Medical</h3><p>Remote patient monitoring iOS app via HealthKit with 2FA and permission flows.</p></div></div>
+      <div class="exp-item"><span class="yr mono">2021</span><div><h3>Web Dev Intern @ Avicenna Medical</h3><p>Led the company website revamp to new design specs.</p></div></div>
+    </div>
+  </section>
+
+  <!-- CH 5 -->
+  <section class="chapter contact" id="c5">
+    <div class="ch-label">Contact — 05</div>
+    <div class="big"><a href="mailto:samuel@samuelbechar.com">LET'S<br>TALK&nbsp;↗</a></div>
+    <div class="links">
+      <a href="mailto:samuel@samuelbechar.com">samuel@samuelbechar.com</a>
+      <a href="https://github.com/samuelbechar" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/samuelbechar" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  const scroller=document.getElementById('scroller');
+  const chapters=[...document.querySelectorAll('.chapter')];
+  const dots=[...document.querySelectorAll('#dots a')];
+  const idx=document.getElementById('idx');
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){
+      const i=chapters.indexOf(e.target);
+      e.target.classList.add('active');
+      dots.forEach((d,j)=>d.classList.toggle('on',j===i));
+      idx.textContent=String(i+1).padStart(2,'0')+' / 05';
+    }
+  }),{root:scroller,threshold:.6});
+  chapters.forEach(c=>io.observe(c));
+  // dot click → scroll
+  dots.forEach(d=>d.addEventListener('click',e=>{e.preventDefault();chapters[+d.dataset.i].scrollIntoView({behavior:'smooth'})}));
+  // wrap statement words for stagger
+  document.querySelectorAll('.statement').forEach(p=>{
+    // already styled via .active; nothing else needed
+  });
+</script>
+</body>
+</html>

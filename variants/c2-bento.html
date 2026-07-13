@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Samuel Bechar — Software Engineer & Builder</title>
+<meta name="description" content="Samuel Bechar — Software Engineer at Rubrik. Building apps, web experiences, and businesses from the ground up." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#08080a;
+    --card:#101013;
+    --card-hi:#16161b;
+    --ink:#f6f6f4;
+    --ink-soft:#90909a;
+    --ink-faint:#5d5d66;
+    --line:rgba(255,255,255,.06);
+    --line-hi:rgba(255,255,255,.14);
+    --accent:#ff7a45;
+    --green:#3ad07e;
+    --radius:20px;
+    --maxw:1100px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55;
+    background-image:radial-gradient(1000px 500px at 80% -5%,rgba(255,122,69,.06),transparent 60%)}
+  ::selection{background:var(--accent);color:#100a06}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:"Geist Mono",ui-monospace,monospace}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px 70px}
+
+  .bar{display:flex;align-items:center;justify-content:space-between;padding:30px 0 22px}
+  .bar .logo{font-weight:700;font-size:16.5px;letter-spacing:-.01em}
+  .bar .logo b{color:var(--accent)}
+  .bar nav{display:flex;gap:6px;font-size:14px}
+  .bar nav a{padding:8px 15px;border-radius:30px;color:var(--ink-soft);transition:.25s}
+  .bar nav a:hover{color:var(--ink);background:var(--card)}
+  .bar nav a.cta{color:var(--ink);border:1px solid var(--line-hi)}
+  .bar nav a.cta:hover{border-color:var(--accent);color:var(--accent);background:transparent}
+  @media(max-width:600px){.bar nav a.opt{display:none}}
+
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;grid-auto-rows:minmax(146px,auto);grid-auto-flow:dense}
+  @media(max-width:840px){.bento{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.bento{grid-template-columns:1fr}}
+
+  .tile{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;position:relative;overflow:hidden;
+    transition:transform .4s cubic-bezier(.2,.7,.2,1),border-color .4s,background .4s;opacity:0;transform:translateY(18px)}
+  .tile::after{content:"";position:absolute;inset:0;border-radius:var(--radius);pointer-events:none;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+  .tile.in{opacity:1;transform:none}
+  .tile:hover{transform:translateY(-4px);border-color:var(--line-hi)}
+  a.tile:hover{background:var(--card-hi)}
+  .label{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);display:flex;align-items:center;gap:8px;font-weight:500}
+
+  .col2{grid-column:span 2}.col3{grid-column:span 3}.col4{grid-column:span 4}.row2{grid-row:span 2}
+  @media(max-width:840px){.col3,.col4{grid-column:span 2}}
+  @media(max-width:520px){.col2,.col3,.col4{grid-column:span 1}.row2{grid-row:auto}}
+
+  /* hero */
+  .hero-tile{display:flex;flex-direction:column;justify-content:space-between;
+    background:radial-gradient(120% 120% at 0% 0%,#1b1b21,#0e0e12 60%)}
+  .hero-tile .av{display:flex;align-items:center;gap:11px}
+  .hero-tile .av .ring{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(58,208,126,.5);animation:ping 2.4s infinite}
+  @keyframes ping{0%{box-shadow:0 0 0 0 rgba(58,208,126,.5)}70%{box-shadow:0 0 0 8px rgba(58,208,126,0)}100%{box-shadow:0 0 0 0 rgba(58,208,126,0)}}
+  .hero-tile h1{font-size:clamp(40px,6.4vw,72px);font-weight:800;letter-spacing:-.04em;line-height:.96;margin:22px 0 14px}
+  .hero-tile h1 .pt{color:var(--accent)}
+  .hero-tile p{color:var(--ink-soft);max-width:460px;font-size:16px}
+  .hero-foot{display:flex;gap:9px;margin-top:24px;flex-wrap:wrap}
+  .chip{font-size:13px;padding:7px 13px;border-radius:30px;background:rgba(255,255,255,.04);border:1px solid var(--line);display:flex;align-items:center;gap:7px;color:var(--ink-soft)}
+  .chip img{width:15px;height:15px;border-radius:4px;object-fit:cover}
+
+  /* now */
+  .now{display:flex;flex-direction:column;justify-content:space-between}
+  .now .ring{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 9px var(--green)}
+  .now .role{font-size:21px;font-weight:700;letter-spacing:-.02em;line-height:1.12;margin-top:auto}
+  .now .role .at{color:var(--accent)}
+  .now small{color:var(--ink-soft);font-size:13px;margin-top:7px;display:block}
+
+  /* clock */
+  .clock{display:flex;flex-direction:column;justify-content:space-between}
+  .clock .time{font-size:30px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums;font-family:"Geist Mono",monospace}
+  .clock .loc{color:var(--ink-soft);font-size:13.5px;margin-top:4px}
+  .clock .coord{color:var(--ink-faint);font-size:11.5px;margin-top:2px}
+
+  /* stack */
+  .stack-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto}
+  .stack-tags span{font-size:12.5px;padding:6px 11px;border-radius:8px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--ink-soft);transition:.25s}
+  .stack-tags span:hover{color:var(--accent);border-color:var(--accent)}
+
+  /* section head */
+  .head{grid-column:1/-1;display:flex;align-items:baseline;justify-content:space-between;margin:26px 4px 2px}
+  .head h2{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+  .head a{font-size:13px;color:var(--accent)}
+
+  /* work */
+  .work-tile{display:flex;flex-direction:column;justify-content:space-between;min-height:200px}
+  .work-tile .top{display:flex;justify-content:space-between;align-items:flex-start}
+  .work-tile .thumb{width:46px;height:46px;border-radius:11px;object-fit:cover;border:1px solid var(--line)}
+  .work-tile .arr{color:var(--ink-faint);font-size:18px;transition:.3s}
+  .work-tile:hover .arr{color:var(--accent);transform:translate(3px,-3px)}
+  .work-tile .body{margin-top:18px}
+  .work-tile h3{font-size:21px;font-weight:700;letter-spacing:-.02em}
+  .work-tile .cat{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-top:5px}
+  .work-tile p{font-size:13.5px;color:var(--ink-soft);margin-top:11px;line-height:1.5}
+
+  /* experience */
+  .exp-tile{display:flex;flex-direction:column;gap:2px}
+  .exp-item{display:grid;grid-template-columns:78px 1fr;gap:22px;padding:16px 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .exp-item:last-child{border-bottom:0;padding-bottom:0}
+  .exp-item .yr{font-size:12.5px;color:var(--ink-faint);font-family:"Geist Mono",monospace}
+  .exp-item .r b{font-weight:600;font-size:15.5px}
+  .exp-item .r .co{color:var(--accent)}
+  .exp-item .r p{color:var(--ink-soft);font-size:13.5px;margin-top:4px;max-width:640px}
+
+  /* contact */
+  .contact-tile{grid-column:span 3;background:radial-gradient(120% 140% at 100% 0%,#241310,#0f0c0b 65%);
+    display:flex;flex-direction:column;justify-content:space-between;border-color:rgba(255,122,69,.22)}
+  .contact-tile h2{font-size:clamp(30px,5vw,50px);font-weight:800;letter-spacing:-.03em;line-height:.96}
+  .contact-tile h2 .pt{color:var(--accent)}
+  .contact-tile .links{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;margin-top:22px}
+  .contact-tile .links a{color:var(--ink-soft);border-bottom:1px solid var(--line-hi);padding-bottom:2px;transition:.25s}
+  .contact-tile .links a:hover{color:var(--accent);border-color:var(--accent)}
+  .email-tile{display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(150deg,var(--accent),#cf4f24);color:#160b06;border-color:transparent}
+  .email-tile .lbl{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;opacity:.7;font-weight:600}
+  .email-tile .big{font-size:23px;font-weight:800;letter-spacing:-.02em;margin-top:auto;line-height:1.05}
+  .email-tile .go{font-size:13px;font-weight:600;margin-top:8px}
+
+  footer{text-align:center;color:var(--ink-faint);font-size:12.5px;margin-top:34px}
+
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.tile{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="wrap" id="top">
+  <div class="bar">
+    <a class="logo" href="#top">Samuel Bechar<b>.</b></a>
+    <nav>
+      <a class="opt" href="#work">Work</a>
+      <a class="opt" href="#exp">Experience</a>
+      <a class="cta" href="mailto:samuel@samuelbechar.com">Get in touch</a>
+    </nav>
+  </div>
+
+  <div class="bento">
+
+    <div class="tile hero-tile col3 row2">
+      <div class="av label"><span class="ring"></span> Software Engineer &amp; Builder · San Francisco</div>
+      <div>
+        <h1>Samuel<br>Bechar<span class="pt">.</span></h1>
+        <p>I build apps, web experiences, and businesses from the ground up. Currently engineering at Rubrik.</p>
+      </div>
+      <div class="hero-foot">
+        <span class="chip"><img src="../images/logos/rubrik.jpeg" alt="">SWE @ Rubrik</span>
+        <span class="chip">UMich CS '25</span>
+        <span class="chip">iOS · Full-stack</span>
+      </div>
+    </div>
+
+    <div class="tile now">
+      <div class="label"><span class="ring"></span> Currently</div>
+      <div class="role">Engineering<br><span class="at">@ Rubrik</span></div>
+      <small>Security Cloud · full-stack</small>
+    </div>
+
+    <div class="tile clock">
+      <div class="label">Local time</div>
+      <div>
+        <div class="time" id="clock">--:--:--</div>
+        <div class="loc">San Francisco, CA</div>
+        <div class="coord mono">37.77° N · 122.42° W</div>
+      </div>
+    </div>
+
+    <div class="tile col2">
+      <div class="label" style="margin-bottom:16px">Stack</div>
+      <div class="stack-tags">
+        <span>Swift</span><span>SwiftUI</span><span>Go</span><span>Scala</span><span>Python</span><span>React</span><span>React Native</span><span>GraphQL</span><span>Node.js</span><span>Firebase</span><span>TypeScript</span>
+      </div>
+    </div>
+
+    <!-- WORK -->
+    <div class="head" id="work"><h2>Selected Work</h2><a href="https://github.com/samuelbechar" target="_blank" rel="noopener">GitHub ↗</a></div>
+
+    <a class="tile work-tile col2" href="https://samuelbechar.notion.site/Stir-98309cbf927f43189c0e4e8a4bd2d176" target="_blank" rel="noopener">
+      <div class="top"><img class="thumb" src="../images/projects/stir.jpeg" alt=""><span class="arr">↗</span></div>
+      <div class="body"><h3>Stir</h3><div class="cat">Business · Coffee brand</div><p>Premium adaptogen coffee supplements — product, sourcing, branding, and store ops, end to end.</p></div>
+    </a>
+    <a class="tile work-tile" href="https://samuelbechar.notion.site/Blitz-47841c12d67b489eb53b9888e5a9334a" target="_blank" rel="noopener">
+      <div class="top"><img class="thumb" src="../images/projects/blitz.jpeg" alt=""><span class="arr">↗</span></div>
+      <div class="body"><h3>Blitz</h3><div class="cat">iOS · Swift</div></div>
+    </a>
+    <a class="tile work-tile" href="https://www.avicenna-medical.com/" target="_blank" rel="noopener">
+      <div class="top"><img class="thumb" src="../images/projects/avitracker.jpg" alt=""><span class="arr">↗</span></div>
+      <div class="body"><h3>AviTracks</h3><div class="cat">iOS · HealthKit</div></div>
+    </a>
+    <a class="tile work-tile" href="https://samuelbechar.notion.site/Arize-Portfolio-5a988f77e66d4e66935bde76766b8892" target="_blank" rel="noopener">
+      <div class="top"><img class="thumb" src="../images/projects/arize.png" alt=""><span class="arr">↗</span></div>
+      <div class="body"><h3>Arize</h3><div class="cat">iOS · Node · Firebase</div></div>
+    </a>
+    <a class="tile work-tile" href="https://samuelbechar.notion.site/Lux-Picnics-Ann-Arbor-c6a19506fac44c54b7a98c0feae4fbaf" target="_blank" rel="noopener">
+      <div class="top"><img class="thumb" src="../images/projects/luxPicnics.jpeg" alt=""><span class="arr">↗</span></div>
+      <div class="body"><h3>Lux Picnics</h3><div class="cat">Business · On Local 4</div></div>
+    </a>
+
+    <!-- EXPERIENCE -->
+    <div class="head" id="exp"><h2>Experience</h2></div>
+    <div class="tile exp-tile col4">
+      <div class="exp-item"><span class="yr">2024 —</span><div class="r"><b>Software Engineer</b> <span class="co">@ Rubrik</span><p>Built Quorum Authorization for Rubrik Security Cloud — a multi-approver security feature for federal customers. Go · Scala · GraphQL · React.</p></div></div>
+      <div class="exp-item"><span class="yr">2023</span><div class="r"><b>Mobile SWE Intern</b> <span class="co">@ Ally Financial</span><p>UI components for the Metronome design system across iOS (SwiftUI) and Android (React Native).</p></div></div>
+      <div class="exp-item"><span class="yr">2022</span><div class="r"><b>iOS Developer Intern</b> <span class="co">@ Avicenna Medical</span><p>Remote patient monitoring iOS app via HealthKit with 2FA and patient permission flows.</p></div></div>
+      <div class="exp-item"><span class="yr">2021</span><div class="r"><b>Web Dev Intern</b> <span class="co">@ Avicenna Medical</span><p>Led the company website revamp to new design specs.</p></div></div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="tile contact-tile">
+      <div class="label">Contact</div>
+      <h2>Have an idea?<br>Let's <span class="pt">build it.</span></h2>
+      <div class="links">
+        <a href="https://github.com/samuelbechar" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/samuelbechar" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="/resume.pdf" target="_blank" rel="noopener">Résumé</a>
+      </div>
+    </div>
+    <a class="tile email-tile" href="mailto:samuel@samuelbechar.com">
+      <div class="lbl">Email</div>
+      <div class="big">samuel@<br>samuelbechar.com</div>
+      <div class="go">Say hello ↗</div>
+    </a>
+
+  </div>
+
+  <footer>© 2026 Samuel Bechar — designed &amp; built in San Francisco</footer>
+</div>
+
+<script>
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const t=e.target;setTimeout(()=>t.classList.add('in'),(+t.dataset.d||0));io.unobserve(t)}}),{threshold:.08});
+  document.querySelectorAll('.tile').forEach((t,i)=>{t.dataset.d=(i%5)*55;io.observe(t)});
+  function tick(){
+    const f=new Intl.DateTimeFormat('en-US',{timeZone:'America/Los_Angeles',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
+    document.getElementById('clock').textContent=f.format(new Date());
+  }
+  tick();setInterval(tick,1000);
+</script>
+</body>
+</html>

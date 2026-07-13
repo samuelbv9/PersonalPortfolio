@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hero layouts — Samuel Bechar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f3efe6;--paper:#faf7f0;--ink:#191713;--ink-soft:#5c574e;--ink-faint:#928b7c;
+    --line:#ddd6c7;--line-strong:#c9c1ad;--accent:#9c3b22;--accent2:#345b6e;
+  }
+  [data-theme="dark"]{
+    --bg:#13100c;--paper:#1c1813;--ink:#efe6d6;--ink-soft:#a99a83;--ink-faint:#6f6552;
+    --line:rgba(255,255,255,.11);--line-strong:rgba(255,255,255,.2);--accent:#c7984f;--accent2:#8fb2c4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,sans-serif;font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .4s,color .4s}
+  a{color:inherit;text-decoration:none}
+  .serif{font-family:"Fraunces",serif}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 44px;width:100%}
+  @media(max-width:680px){.wrap{padding:0 24px}}
+  .sc{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+  .sw{color:var(--accent2);font-style:italic}
+  .bz{color:var(--accent);font-style:italic}
+
+  .theme-toggle{position:fixed;top:20px;right:24px;z-index:80;width:38px;height:38px;border-radius:50%;border:1px solid var(--line-strong);background:var(--bg);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:.25s}
+  .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:rotate(15deg)}
+  .theme-toggle svg{width:16px;height:16px}.ic-sun{display:none}.ic-moon{display:block}
+  [data-theme="dark"] .ic-sun{display:block}[data-theme="dark"] .ic-moon{display:none}
+
+  .stage{min-height:100vh;display:flex;flex-direction:column;position:relative;border-bottom:1px solid var(--line-strong)}
+  .stage .wrap{width:100%}
+  .toprow{display:flex;align-items:center;justify-content:space-between;padding:26px 0}
+  .toprow nav{display:flex;gap:24px;font-size:13.5px}
+  .toprow nav a{opacity:.7}
+  @media(max-width:680px){.toprow nav{display:none}}
+  .who{font-family:"Fraunces",serif;font-size:clamp(20px,2.3vw,25px);font-weight:400}
+  .sub{font-size:clamp(15.5px,1.6vw,18px);color:var(--ink-soft)}
+  .sub a{color:var(--ink);border-bottom:1px solid var(--line-strong)}
+  .cue{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+  .vlabel{position:absolute;left:44px;bottom:20px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint)}
+  .vlabel b{color:var(--accent);font-weight:600}
+  @media(max-width:680px){.vlabel{left:24px}}
+
+  /* A · left (current) */
+  .hA .body{flex:1;display:flex;flex-direction:column;justify-content:center;padding-bottom:44px}
+  .hA .who{margin-bottom:30px}
+  .hA h1{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(46px,9vw,138px);line-height:.98;letter-spacing:-.025em;max-width:15ch}
+  .hA .sub{margin-top:36px;max-width:56ch}
+  .hA .foot{display:flex;align-items:center;gap:18px;padding-bottom:30px}
+  .hA .foot .ln{flex:1;height:1px;background:var(--line-strong)}
+
+  /* B · centered */
+  .hB .body{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding-bottom:44px}
+  .hB .who{margin-bottom:26px}
+  .hB h1{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(46px,8.4vw,128px);line-height:.98;letter-spacing:-.025em}
+  .hB .sub{margin:34px auto 0;max-width:60ch}
+  .hB .foot{padding-bottom:30px;text-align:center}
+  .hB .foot .cue{display:inline-flex;align-items:center;gap:9px}
+
+  /* C · split with meta column */
+  .hC .body{flex:1;display:grid;grid-template-columns:1.55fr .85fr;gap:64px;align-items:center;padding-bottom:44px}
+  .hC .who{margin-bottom:26px}
+  .hC h1{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(42px,6.6vw,96px);line-height:1;letter-spacing:-.02em}
+  .hC .sub{margin-top:30px;max-width:48ch}
+  .hC .meta{border-left:1px solid var(--line);padding-left:26px}
+  .hC .meta .row{padding:12px 0;border-bottom:1px dotted var(--line-strong)}
+  .hC .meta .row:last-child{border-bottom:0}
+  .hC .meta .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+  .hC .meta .v{font-family:"Fraunces",serif;font-size:17px;margin-top:5px}
+  .hC .meta .v .dot{color:var(--accent)}
+  @media(max-width:820px){.hC .body{grid-template-columns:1fr;gap:36px}.hC .meta{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:20px}}
+
+  /* D · oversized type */
+  .hD .body{flex:1;display:flex;flex-direction:column;justify-content:center;padding-bottom:20px}
+  .hD h1{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(52px,12vw,190px);line-height:.9;letter-spacing:-.035em}
+  .hD .foot{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;padding-bottom:30px;flex-wrap:wrap}
+  .hD .foot .sub{max-width:52ch}
+
+  /* E · framed magazine plate */
+  .hE{padding:18px}
+  .hE .plate{flex:1;border:1px solid var(--ink);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:70px 44px;position:relative;min-height:calc(100vh - 36px)}
+  .hE .corner{position:absolute;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+  .hE .tl{top:22px;left:26px}.hE .tr{top:22px;right:26px}.hE .bc{bottom:22px;left:50%;transform:translateX(-50%)}
+  .hE .who{margin-bottom:26px}
+  .hE h1{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(44px,8vw,120px);line-height:.98;letter-spacing:-.025em}
+  .hE .sub{margin:32px auto 0;max-width:56ch}
+
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+  <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+  <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+</button>
+
+<!-- A -->
+<section class="stage hA">
+  <div class="wrap toprow"><span class="sc">Portfolio — 2026</span><nav><a href="#">Work</a><a href="#">Experience</a><a href="#">Contact</a></nav><span class="sc">San Francisco, CA</span></div>
+  <div class="wrap body">
+    <div class="who serif">Samuel Bechar</div>
+    <h1 class="serif"><span class="sw">iOS</span> &amp; <span class="bz">full-stack</span><br>engineer.</h1>
+    <p class="sub">On the Identity &amp; Access Management team at <a href="#">Rubrik</a> — building the authentication and authorization behind Rubrik Security Cloud, in Go, Scala &amp; React. Michigan CS '25, based in San Francisco.</p>
+  </div>
+  <div class="wrap foot"><span class="cue">Selected work ↓</span><span class="ln"></span></div>
+  <span class="vlabel"><b>A</b> left · current</span>
+</section>
+
+<!-- B -->
+<section class="stage hB">
+  <div class="wrap toprow"><span class="sc">Portfolio — 2026</span><nav><a href="#">Work</a><a href="#">Experience</a><a href="#">Contact</a></nav><span class="sc">San Francisco, CA</span></div>
+  <div class="wrap body">
+    <div class="who serif">Samuel Bechar</div>
+    <h1 class="serif"><span class="sw">iOS</span> &amp; <span class="bz">full-stack</span> engineer.</h1>
+    <p class="sub">On the Identity &amp; Access Management team at <a href="#">Rubrik</a> — building the authentication and authorization behind Rubrik Security Cloud, in Go, Scala &amp; React. Michigan CS '25, based in San Francisco.</p>
+  </div>
+  <div class="wrap foot"><span class="cue">Selected work ↓</span></div>
+  <span class="vlabel"><b>B</b> centered · magazine cover</span>
+</section>
+
+<!-- C -->
+<section class="stage hC">
+  <div class="wrap toprow"><span class="sc">Portfolio — 2026</span><nav><a href="#">Work</a><a href="#">Experience</a><a href="#">Contact</a></nav><span class="sc">San Francisco, CA</span></div>
+  <div class="wrap body">
+    <div class="lead">
+      <div class="who serif">Samuel Bechar</div>
+      <h1 class="serif"><span class="sw">iOS</span> &amp; <span class="bz">full-stack</span><br>engineer.</h1>
+      <p class="sub">Building the authentication and authorization behind Rubrik Security Cloud. Michigan CS '25, based in San Francisco.</p>
+    </div>
+    <div class="meta">
+      <div class="row"><div class="k">Currently</div><div class="v"><span class="dot">●</span> Rubrik — IAM team</div></div>
+      <div class="row"><div class="k">Focus</div><div class="v">Auth &amp; authorization</div></div>
+      <div class="row"><div class="k">Stack</div><div class="v">Go · Scala · React</div></div>
+      <div class="row"><div class="k">Based in</div><div class="v">San Francisco</div></div>
+    </div>
+  </div>
+  <span class="vlabel"><b>C</b> split · with meta column</span>
+</section>
+
+<!-- D -->
+<section class="stage hD">
+  <div class="wrap toprow"><span class="sc">Samuel Bechar — Portfolio 2026</span><nav><a href="#">Work</a><a href="#">Experience</a><a href="#">Contact</a></nav><span class="sc">San Francisco, CA</span></div>
+  <div class="wrap body">
+    <h1 class="serif"><span class="sw">iOS</span> &amp; <span class="bz">full-stack</span><br>engineer.</h1>
+  </div>
+  <div class="wrap foot">
+    <p class="sub">On the Identity &amp; Access Management team at <a href="#">Rubrik</a> — authentication and authorization behind Rubrik Security Cloud, in Go, Scala &amp; React. Michigan CS '25, San Francisco.</p>
+    <span class="cue">Selected work ↓</span>
+  </div>
+  <span class="vlabel"><b>D</b> oversized type · name in top bar</span>
+</section>
+
+<!-- E -->
+<section class="stage hE">
+  <div class="plate">
+    <span class="corner tl">Portfolio — 2026</span>
+    <span class="corner tr">San Francisco, CA</span>
+    <div class="who serif">Samuel Bechar</div>
+    <h1 class="serif"><span class="sw">iOS</span> &amp; <span class="bz">full-stack</span> engineer.</h1>
+    <p class="sub">On the Identity &amp; Access Management team at <a href="#">Rubrik</a> — building the authentication and authorization behind Rubrik Security Cloud. Michigan CS '25.</p>
+    <span class="corner bc">Selected work ↓</span>
+  </div>
+  <span class="vlabel"><b>E</b> framed · magazine plate</span>
+</section>
+
+<script>
+  const root=document.documentElement;
+  const saved=localStorage.getItem('theme'); if(saved)root.dataset.theme=saved;
+  document.getElementById('themeToggle').addEventListener('click',()=>{const n=root.dataset.theme==='dark'?'light':'dark';root.dataset.theme=n;localStorage.setItem('theme',n)});
+</script>
+</body>
+</html>

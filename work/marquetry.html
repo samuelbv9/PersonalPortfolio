@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Marquetry — Samuel Bechar</title>
+<meta name="description" content="Pictures built from thin wood veneers, cut and fit together by hand. A compass rose, and a guinea pig in progress." />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f3efe6;--paper:#faf7f0;--ink:#191713;--ink-soft:#5c574e;--ink-faint:#928b7c;
+    --line:#ddd6c7;--line-strong:#c9c1ad;--accent:#9c3b22;--accent2:#345b6e;
+    --frame-shadow:0 26px 60px -30px rgba(40,30,15,.5);
+  }
+  [data-theme="dark"]{
+    --bg:#13100c;--paper:#1c1813;--ink:#efe6d6;--ink-soft:#a99a83;--ink-faint:#6f6552;
+    --line:rgba(255,255,255,.11);--line-strong:rgba(255,255,255,.2);--accent:#c7984f;--accent2:#8fb2c4;
+    --frame-shadow:0 30px 66px -32px rgba(0,0,0,.8);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,sans-serif;font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased;transition:background .4s,color .4s}
+  a{color:inherit;text-decoration:none}
+  .serif{font-family:"Fraunces",serif}
+  .sc{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+  .accent{color:var(--accent)}
+  .pwrap{max-width:1080px;margin:0 auto;padding:0 40px 120px}
+  @media(max-width:680px){.pwrap{padding:0 24px 90px}}
+
+  .theme-toggle{position:fixed;top:20px;right:24px;z-index:80;width:38px;height:38px;border-radius:50%;border:1px solid var(--line-strong);background:var(--bg);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:.25s}
+  .theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:rotate(15deg)}
+  .theme-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .theme-toggle svg{width:16px;height:16px}.ic-sun{display:none}.ic-moon{display:block}
+  [data-theme="dark"] .ic-sun{display:block}[data-theme="dark"] .ic-moon{display:none}
+
+  .pbar{display:flex;align-items:center;justify-content:space-between;padding:26px 0}
+  .back{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-soft);transition:.25s}
+  .back:hover{color:var(--accent)}
+
+  .phead{padding:60px 0 34px}
+  .phead h1{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(48px,8vw,116px);line-height:.96;letter-spacing:-.03em;margin:16px 0 22px}
+  .phead .lead{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(20px,2.4vw,28px);line-height:1.4;max-width:60ch;color:var(--ink-soft)}
+
+  .meta{display:flex;flex-wrap:wrap;gap:44px;padding:24px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .meta .col .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+  .meta .col .v{font-family:"Fraunces",serif;font-size:18px;margin-top:7px}
+
+  /* The piece is square but the frame is 3:2, so the hero mats the artwork
+     instead of cropping it. The image is absolutely positioned and sized with
+     object-fit:contain, which can never crop. Do NOT size this with
+     max-height/height percentages against the aspect-ratio box: that resolves
+     inconsistently across browsers and silently falls back to width-based
+     sizing, which overflows the shorter axis and clips the piece. */
+  .hero-img{position:relative;margin:46px 0 10px;aspect-ratio:3/2;border-radius:5px;overflow:hidden;border:1px solid var(--line);background:var(--paper);box-shadow:var(--frame-shadow)}
+  .hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:26px;display:block}
+  @media(max-width:680px){.hero-img{aspect-ratio:1/1}.hero-img img{padding:16px}}
+
+  /* ——— case-study components ——— */
+  .body{margin-top:26px}
+  .sechead{display:flex;align-items:baseline;gap:20px;border-top:2px solid var(--ink);padding-top:20px;margin:76px 0 26px}
+  .sechead .n{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:15px;color:var(--accent);letter-spacing:.04em;flex-shrink:0}
+  .sechead h2{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(26px,3.4vw,38px);letter-spacing:-.01em}
+  .prose{max-width:720px}
+  .prose p{margin-bottom:18px}
+  .prose p:last-child{margin-bottom:0}
+
+  .figure{margin:38px 0}
+  .figure .ph{border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--paper)}
+  .figure img{width:100%;display:block}
+  .figcap{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-faint);margin-top:11px;display:flex;gap:10px}
+  .figcap::before{content:"—";color:var(--accent);flex-shrink:0}
+  .fgrid{display:grid;gap:24px;margin:38px 0}
+  .fgrid.c2{grid-template-columns:1fr 1fr}
+  .fgrid.c3{grid-template-columns:repeat(3,1fr)}
+  .fgrid .figure{margin:0}
+  /* every process photo is a 3:4 portrait; match it so nothing is cropped */
+  .fgrid.c2 .ph img,.fgrid.c3 .ph img{aspect-ratio:3/4;object-fit:cover}
+  @media(max-width:640px){.fgrid.c2,.fgrid.c3{grid-template-columns:1fr}}
+
+  /* status flag for the unfinished piece */
+  .wip{display:inline-flex;align-items:center;gap:9px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent2);border:1px solid var(--line-strong);border-radius:100px;padding:6px 14px;margin-bottom:22px}
+  .wip::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent2);flex-shrink:0}
+
+  .intro{margin-top:34px}
+  .intro p{font-family:"Fraunces",serif;font-weight:300;font-size:19px;color:var(--ink-soft)}
+
+  .pnav{display:flex;justify-content:space-between;gap:20px;margin-top:90px;padding-top:26px;border-top:2px solid var(--ink);flex-wrap:wrap}
+  .pnav a{font-size:14.5px;color:var(--ink-soft);transition:.25s}
+  .pnav a:hover{color:var(--accent)}
+  .pfoot{margin-top:40px}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+  <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+  <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+</button>
+<div class="pwrap">
+  <div class="pbar"><a class="back" href="../index.html#work">← Selected work</a><span class="sc">Making — Woodworking</span></div>
+
+  <header class="phead">
+    <div class="sc accent">Making — Woodworking</div>
+    <h1 class="serif">Marquetry</h1>
+    <p class="lead">Pictures built from thin wood veneers, cut and fit together by hand. A compass rose, finished, and a guinea pig still on the bench.</p>
+  </header>
+
+  <div class="meta">
+    <div class="col"><div class="k">Type</div><div class="v">Marquetry · Wall art</div></div>
+    <div class="col"><div class="k">Material</div><div class="v">Wood veneer</div></div>
+    <div class="col"><div class="k">Role</div><div class="v">Designed &amp; made</div></div>
+    <div class="col"><div class="k">Year</div><div class="v">2026</div></div>
+  </div>
+
+  <div class="hero-img"><img src="../images/projects/marquetry/web/compass-rose.jpg" alt="The finished compass rose: a sixteen point star in light and dark veneers, set in a round field inside a square panel with a dark border"></div>
+
+  <section class="body">
+    <div class="prose intro">
+      <p>Veneers a fraction of a millimeter thick, cut to shape, fit edge to edge with no gaps and no filler, then glued down to a panel. The colors are the wood itself.</p>
+    </div>
+
+    <div class="sechead"><span class="n">01</span><h2 class="serif">Compass rose</h2></div>
+    <div class="prose">
+      <p>Roughly eight inches square. Everything is cut to a full size paper pattern and built out from the center.</p>
+    </div>
+    <div class="fgrid c3">
+      <figure class="figure"><div class="ph"><img loading="lazy" decoding="async" src="../images/projects/marquetry/web/01-first-pieces.jpg" alt="The first cut veneer pieces laid on a paper pattern beside a cutting mat"></div><figcaption class="figcap">First pieces on the pattern</figcaption></figure>
+      <figure class="figure"><div class="ph"><img loading="lazy" decoding="async" src="../images/projects/marquetry/web/02-star-center.jpg" alt="The center of the star assembled from alternating light and dark veneer points"></div><figcaption class="figcap">Out from the center</figcaption></figure>
+      <figure class="figure"><div class="ph"><img loading="lazy" decoding="async" src="../images/projects/marquetry/web/03-star-complete.jpg" alt="The completed sixteen point star assembled on the paper pattern"></div><figcaption class="figcap">The star closed up</figcaption></figure>
+    </div>
+    <div class="fgrid c2">
+      <figure class="figure"><div class="ph"><img loading="lazy" decoding="async" src="../images/projects/marquetry/web/04-field.jpg" alt="The star set into a round veneer field on a dark rectangular background panel"></div><figcaption class="figcap">Let into a round field</figcaption></figure>
+      <figure class="figure"><div class="ph"><img loading="lazy" decoding="async" src="../images/projects/marquetry/web/05-border.jpg" alt="Thin border strips laid along the edges of the panel before gluing"></div><figcaption class="figcap">Border strips going on</figcaption></figure>
+      <figure class="figure"><div class="ph"><img loading="lazy" decoding="async" src="../images/projects/marquetry/web/06-press.jpg" alt="The glued panel pressed flat under a board weighted with a large jug of laundry detergent"></div><figcaption class="figcap">Pressed flat under a jug of detergent, for want of a veneer press</figcaption></figure>
+      <figure class="figure"><div class="ph"><img loading="lazy" decoding="async" src="../images/projects/marquetry/web/07-pressed.jpg" alt="The pressed panel, seams tight and surface flat, still on the cutting mat"></div><figcaption class="figcap">Out of the press, seams tight</figcaption></figure>
+    </div>
+    <div class="fgrid c2">
+      <figure class="figure"><div class="ph"><img loading="lazy" decoding="async" src="../images/projects/marquetry/web/08-finished.jpg" alt="The finished compass rose panel held up, seen straight on"></div><figcaption class="figcap">Sanded and finished</figcaption></figure>
+      <figure class="figure"><div class="ph"><img loading="lazy" decoding="async" src="../images/projects/marquetry/web/09-finished-angle.jpg" alt="The finished compass rose seen at an angle, the grain in each piece catching the light differently"></div><figcaption class="figcap">The same piece, off angle</figcaption></figure>
+    </div>
+
+    <div class="sechead"><span class="n">02</span><h2 class="serif">Guinea pig</h2></div>
+    <div class="prose">
+      <span class="wip">On the bench</span>
+      <p>The second piece is the first guinea pig we had, who passed away. I started from a photo of him and used AI to flatten it into a pattern of solid shapes and colors, then cut a piece of veneer for each one, matching the tone of the wood to the tone in the pattern.</p>
+    </div>
+    <figure class="figure" style="max-width:560px">
+      <div class="ph"><img loading="lazy" decoding="async" src="../images/projects/marquetry/web/gp-00-design.jpg" alt="The pattern for the guinea pig piece: a photo reduced to flat regions of solid color, each region a piece of veneer to be cut"></div>
+      <figcaption class="figcap">The photo, flattened into shapes to cut to</figcaption>
+    </figure>
+    <div class="prose">
+      <p>Curves are the difficulty. On the rose a bad cut gets recut against a straightedge. Here every edge is unique and has to meet three or four others, so pieces go down onto the printed pattern and get held with tape until their neighbors arrive.</p>
+    </div>
+    <div class="fgrid c3">
+      <figure class="figure"><div class="ph"><img loading="lazy" decoding="async" src="../images/projects/marquetry/web/gp-01-first-pieces.jpg" alt="Early veneer pieces for the guinea pig taped onto the printed pattern"></div><figcaption class="figcap">First pieces down</figcaption></figure>
+      <figure class="figure"><div class="ph"><img loading="lazy" decoding="async" src="../images/projects/marquetry/web/gp-02-progress.jpg" alt="More veneer pieces filled in across the guinea pig, held with blue tape"></div><figcaption class="figcap">Filling in the body</figcaption></figure>
+      <figure class="figure"><div class="ph"><img loading="lazy" decoding="async" src="../images/projects/marquetry/web/gp-03-nearly.jpg" alt="The guinea pig nearly complete in veneer"></div><figcaption class="figcap">Nearly closed up</figcaption></figure>
+    </div>
+    <figure class="figure" style="max-width:560px">
+      <div class="ph"><img loading="lazy" decoding="async" src="../images/projects/marquetry/web/gp-04-substrate.jpg" alt="The assembled guinea pig laid out on the pale substrate panel, taped in position, with a craft knife beside it"></div>
+      <figcaption class="figcap">Laid out on the panel it will be glued to</figcaption>
+    </figure>
+  </section>
+
+  <div class="pnav"><a href="nightstand.html">← Nightstand</a><a href="../index.html#work">All work →</a></div>
+  <div class="pfoot sc">© 2026 Samuel Bechar</div>
+</div>
+<script>
+  const root=document.documentElement;
+  const saved=localStorage.getItem('theme'); if(saved)root.dataset.theme=saved;
+  document.getElementById('themeToggle').addEventListener('click',()=>{const n=root.dataset.theme==='dark'?'light':'dark';root.dataset.theme=n;localStorage.setItem('theme',n)});
+</script>
+</body>
+</html>
