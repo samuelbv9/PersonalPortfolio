@@ -1,5 +1,6 @@
-# Static HTML/CSS site — no build step.
-# Overrides the old Vite build settings saved in the Netlify UI.
+# Static HTML/CSS site — no real build.
+# The Netlify site config expects a `dist` publish directory (left over from
+# the old Vite setup), so the "build" just copies the site into dist/.
 [build]
-  command = "echo 'static site — no build needed'"
-  publish = "."
+  command = "rm -rf dist && mkdir dist && rsync -a --exclude='.git' --exclude='dist' --exclude='node_modules' --exclude='.next' ./ dist/"
+  publish = "dist"
